@@ -388,6 +388,7 @@ try {
 - 원격은 `origin` = https://github.com/maeivs/city-salon.git 이다. 기본 브랜치는 `main` 이다.
 - 일상 작업은 `maeiv` 브랜치에서 커밋/푸시하고, `main` 에는 직접 커밋하지 않는다(병합용).
 - `main` 푸시 시 GitHub Actions(`.github/workflows/deploy-pages.yml`)가 www 를 GitHub Pages 로 자동 배포한다. 공개 URL: https://maeivs.github.io/city-salon/ (SPA 폴백은 404.html 복사, base 경로는 빌드 시 `PUBLIC_BASE_PATH=/city-salon/` 주입 — 실서비스 nginx 루트 배포 시에는 미지정으로 두면 된다).
+- ⚠️ 2026-07-23 현재 Actions 워크플로가 push 이벤트에 실행되지 않는다(저장소 설정은 정상, 계정 측 제한 — GitHub 이메일 미인증 시 워크플로 실행 차단이 대표 원인). 그래서 현재 Pages 소스는 **gh-pages 브랜치 직접 푸시**다. 수동 재배포 절차: ① PowerShell 에서 `$env:PUBLIC_BASE_PATH="/city-salon/"; npm run build` (⚠️ Git Bash 는 `/city-salon/` 값을 Windows 경로로 변환해 base 가 깨진다 — 반드시 PowerShell 또는 `MSYS_NO_PATHCONV=1`) ② `www/public` 을 임시 폴더로 복사 후 `index.html`→`404.html` 복사, `.nojekyll` 생성, 미사용 대용량 자산(mediapipe/, pdfjs/, *.gz) 제거 ③ orphan 커밋으로 `origin gh-pages` 에 force push. Actions 가 정상화되면 gh-pages 브랜치를 지우고 Pages 소스를 GitHub Actions 로 전환한다.
 
 ## 진행 메모
 
