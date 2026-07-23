@@ -392,6 +392,7 @@ try {
 
 ## 진행 메모
 
+- 2026-07-23: 디자인 2안(다크 에디토리얼 — 웜 차콜 `#12110e` + 샴페인 골드 `#d9b56c`, 스코프드 다크 MUI 테마)을 `/v2` 라우트에 추가했다(`modules/main/views/v2/`, 1안과 컨트롤러·models·landingContent 공유, 뷰만 분리). 시안 확정 시 채택안을 `/dashboard` 로 승격하고 나머지 뷰 폴더를 정리할 것. 한글 대형 제목에는 `wordBreak: "keep-all"` 을 적용할 것(단어 중간 줄바꿈 방지).
 - 2026-07-23: 도시살롱 랜딩 페이지(`/dashboard`)를 `modules/main` 으로 구현했다. site-info 를 도시살롱 브랜드로 갱신(문의 메일 `hello@dosisallong.kr` 은 TODO 성 임시값), MuiTheme 팔레트를 딥그린/골드/크림으로 교체, `@fontsource/noto-serif-kr` 의존성 추가. 맞춤 추천 폼은 `useGlobalForm`(`recommendForm`) 목업으로 제출 시 준비 안내만 띄운다(AS 연동 시 교체). 같은 날 www `node_modules` 부분 압축해제 증상이 재발해 통째로 지우고 재설치했다.
 - 2026-07-23: ehfuse/project-template 을 클론해 city-salon 프로젝트로 초기 세팅했다. 슬러그 `app` → `city-salon` 교체(static 경로/storagePrefix/DEV_HOST/site-info), www 패키지명 `city-salon-www`, AS URL 을 as/configs/server.json 의 48200 으로 통일, www/as `.env` 생성(.env.example 복사본 — ES 키/시크릿은 미설정). 프로덕션 도메인·브랜드 문구는 TODO 플레이스홀더 상태다.
 - www 는 codeshop www 를 템플릿으로 초기 세팅했다(2026-07-21). configs/site-info, backend/settings, .env 의 도메인·AS 포트는 TODO 플레이스홀더 상태다.
