@@ -1,22 +1,22 @@
 import { createTheme } from "@mui/material";
 
-/** 공통 MUI 테마 (템플릿 기본값 — 브랜드 확정 시 조정) */
+/** 공통 MUI 테마 (도시살롱 브랜드 — 딥그린 + 크림) */
 const CustomMuiTheme = createTheme({
     palette: {
         primary: {
-            main: "#0f766e", // 틸 (템플릿 기본 브랜드색)
-            light: "#14b8a6",
-            dark: "#115e59",
+            main: "#2c4a33", // 도시살롱 딥그린
+            light: "#54745c",
+            dark: "#1e3624",
         },
         secondary: {
-            main: "#2563eb",
+            main: "#b5924c", // 골드 포인트
         },
         background: {
-            default: "#f1f4f7",
+            default: "#faf8f2", // 크림 배경
         },
         text: {
-            primary: "#1f2937",
-            secondary: "#6b7280",
+            primary: "#2b2a24",
+            secondary: "#716f64",
         },
     },
     typography: {
