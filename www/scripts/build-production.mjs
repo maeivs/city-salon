@@ -102,7 +102,7 @@ async function swapBuildDirectory(buildDirPath, publicDirPath, backupDirPath) {
  * 스왑되면 프로덕션 정적 자산이 통째로 404 가 된다. 대표 파일 몇 개로 검증한다.
  */
 async function assertStaticAssetsCopied(buildDirPath) {
-    const mustExist = ["robots.txt", "app/favicon.svg"];
+    const mustExist = ["robots.txt", "city-salon/favicon.svg"];
     for (const rel of mustExist) {
         if (!(await pathExists(resolve(buildDirPath, rel)))) {
             throw new Error(

@@ -23,6 +23,14 @@
 - `es`의 모든 라우트는 `as`가 proxy로 bypass한다. `www`는 `as`를 통해 `es` 라우트를 직접 사용할 수 있다.
 - 참조 구현이 필요하면 codeshop 레포(`d:\project\codeshop`)의 동일 계층을 기준으로 삼되, codeshop 도메인(장례/POS/e-iris) 전용 로직은 가져오지 않는다.
 
+### city-salon 도메인 규칙
+
+- 서비스명은 **도시살롱** 이다. `www` 의 `/dashboard` 는 퍼블릭 랜딩(메인) 페이지이며 `www/src/modules/main` 모듈이 소유한다(레이아웃 `MainLayout` + 페이지 `MainPage`, 미구현 하위 경로는 `ComingSoonPage`).
+- 브랜드 톤: 딥그린 `#2c4a33`(primary), 골드 `#b5924c`(secondary), 크림 배경 `#faf8f2`. 헤드라인은 세리프(`Noto Serif KR`, `SERIF_FONT` 상수 — `modules/main/views/configs/landingContent.ts`), 본문은 Pretendard. 폰트는 `src/index.css` 에서 `@fontsource` 로 로드한다.
+- 랜딩의 사진 자리는 `modules/main/views/components/MockPhoto.tsx`(그라디언트 목업)로 채운다. 실사 이미지가 확보되면 variant 별로 교체한다.
+- 랜딩 정적 콘텐츠(네비/카피/카드 목록)는 `modules/main/views/configs/landingContent.ts` 에 모아 관리한다.
+- 기존 관리자형 대시보드 템플릿(`modules/dashboard`)은 현재 라우팅에서 빠져 있다. 이후 관리자 화면이 필요해지면 재사용한다.
+
 ### www 기본 규칙
 
 > **www 작업 후에는 반드시 타입체크까지 완료해라.**
@@ -377,11 +385,13 @@ try {
 
 ## Git 규칙
 
-- 원격은 아직 없다(TODO: city-salon 전용 원격 저장소 확정 시 origin 추가). 기본 브랜치는 `main` 이다.
+- 원격은 `origin` = https://github.com/maeivs/city-salon.git 이다. 기본 브랜치는 `main` 이다.
 - 일상 작업은 `maeiv` 브랜치에서 커밋/푸시하고, `main` 에는 직접 커밋하지 않는다(병합용).
+- `main` 푸시 시 GitHub Actions(`.github/workflows/deploy-pages.yml`)가 www 를 GitHub Pages 로 자동 배포한다. 공개 URL: https://maeivs.github.io/city-salon/ (SPA 폴백은 404.html 복사, base 경로는 빌드 시 `PUBLIC_BASE_PATH=/city-salon/` 주입 — 실서비스 nginx 루트 배포 시에는 미지정으로 두면 된다).
 
 ## 진행 메모
 
+- 2026-07-23: 도시살롱 랜딩 페이지(`/dashboard`)를 `modules/main` 으로 구현했다. site-info 를 도시살롱 브랜드로 갱신(문의 메일 `hello@dosisallong.kr` 은 TODO 성 임시값), MuiTheme 팔레트를 딥그린/골드/크림으로 교체, `@fontsource/noto-serif-kr` 의존성 추가. 맞춤 추천 폼은 `useGlobalForm`(`recommendForm`) 목업으로 제출 시 준비 안내만 띄운다(AS 연동 시 교체). 같은 날 www `node_modules` 부분 압축해제 증상이 재발해 통째로 지우고 재설치했다.
 - 2026-07-23: ehfuse/project-template 을 클론해 city-salon 프로젝트로 초기 세팅했다. 슬러그 `app` → `city-salon` 교체(static 경로/storagePrefix/DEV_HOST/site-info), www 패키지명 `city-salon-www`, AS URL 을 as/configs/server.json 의 48200 으로 통일, www/as `.env` 생성(.env.example 복사본 — ES 키/시크릿은 미설정). 프로덕션 도메인·브랜드 문구는 TODO 플레이스홀더 상태다.
 - www 는 codeshop www 를 템플릿으로 초기 세팅했다(2026-07-21). configs/site-info, backend/settings, .env 의 도메인·AS 포트는 TODO 플레이스홀더 상태다.
 - package.json 의존성은 codeshop 전체를 그대로 가져온 상태다. 서비스 방향이 잡히면 안 쓰는 패키지(mediapipe/photo-editor/pdf/xlsx 등)를 다이어트할 예정 — 다이어트 시 `postinstall` 의 setup-mediapipe/setup-pdfjs 스크립트도 함께 정리할 것.

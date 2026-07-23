@@ -1,0 +1,64 @@
+# www 를 GitHub Pages 로 배포한다.
+# main 푸시 시: www 를 /city-salon/ base 로 빌드해 Pages 에 올린다.
+# SPA 라우팅은 404.html 폴백(index.html 복사)으로 처리한다.
+name: Deploy www to GitHub Pages
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+concurrency:
+    group: pages
+    cancel-in-progress: true
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: www
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+                  cache-dependency-path: www/package-lock.json
+
+            - name: Install dependencies
+              run: npm ci --no-audit --no-fund
+
+            # 프로덕션 빌드는 반드시 npm run build(원자 교체 스크립트)로만 실행한다. 산출물은 www/public.
+            - name: Build (base=/city-salon/)
+              run: npm run build
+              env:
+                  PUBLIC_BASE_PATH: /city-salon/
+
+            # GitHub Pages SPA 폴백 — 없는 경로 요청 시 404.html(=index.html)로 앱을 띄운다.
+            - name: Create SPA fallback
+              run: cp public/index.html public/404.html
+
+            - uses: actions/configure-pages@v5
+              with:
+                  enablement: true
+
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                  path: www/public
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - id: deployment
+              uses: actions/deploy-pages@v4

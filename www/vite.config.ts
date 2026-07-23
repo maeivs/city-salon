@@ -203,7 +203,8 @@ export default defineConfig(({ command, mode }) => {
     }
 
     return {
-        // base: "/dist",
+        // 서브 경로 배포(GitHub Pages 등)용 base. 미지정 시 루트("/") — 실서비스(nginx 루트 서빙) 동작 불변.
+        base: env.PUBLIC_BASE_PATH || "/",
         plugins,
 
         optimizeDeps: {
