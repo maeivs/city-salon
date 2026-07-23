@@ -1,0 +1,46 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="https://maeivs.github.io/city-salon/city-salon/favicon.svg"/><title>도시살롱 — 취향이 맞는 사람을 우리 동네에서</title><meta name="description" content="취향과 관심사를 바탕으로 나와 맞는 사람, 모임, 공간을 연결하는 지역 기반 소셜 플랫폼"/><meta name="keywords" content="도시살롱, 소셜 살롱, 지역 모임, 취향 모임, 소규모 모임"/><meta name="author" content="도시살롱"/><meta name="robots" content="index, follow"/><link rel="canonical" href="https://maeivs.github.io/city-salon"/><meta property="og:title" content="도시살롱 — 취향이 맞는 사람을 우리 동네에서"/><meta property="og:description" content="취향과 관심사를 바탕으로 나와 맞는 사람, 모임, 공간을 연결하는 지역 기반 소셜 플랫폼"/><meta property="og:url" content="https://maeivs.github.io/city-salon"/><meta property="og:type" content="website"/><meta property="og:site_name" content="도시살롱"/><meta property="og:locale" content="ko_KR"/><meta property="og:image" content="https://maeivs.github.io/city-salon/city-salon/og-image.png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="도시살롱 — 취향이 맞는 사람을 우리 동네에서"/><meta name="twitter:description" content="취향과 관심사를 바탕으로 나와 맞는 사람, 모임, 공간을 연결하는 지역 기반 소셜 플랫폼"/><meta name="twitter:image" content="https://maeivs.github.io/city-salon/city-salon/og-image.png"/><script type="module" crossorigin src="/city-salon/js.d/main-DbCF6Ypg.js"></script><link rel="modulepreload" crossorigin href="/city-salon/vendor.d/react-8ev7OoKf.js"><link rel="modulepreload" crossorigin href="/city-salon/vendor.d/stylis-CoxhmOic.js"><link rel="stylesheet" crossorigin href="/city-salon/css.d/main-ORzTjJxU.css"></head><body><div id="root"></div><div id="initial-loader" aria-hidden="true"><div class="initial-loader__spinner"></div></div><style>#initial-loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background-color:#fff;z-index:2147483647}#initial-loader .initial-loader__spinner{box-sizing:border-box;width:54px;height:54px;border-radius:50%;border:4px solid rgba(28,64,125,.14);border-top-color:#1c407d;animation:initial-loader-spin .75s linear infinite}@keyframes initial-loader-spin{to{transform:rotate(360deg)}}</style><script>(function () {
+            // main 번들 실행 대기 한도(첫 검사 시점). 라즈베리파이 콜드 부팅은 main 그래프
+            // 다운로드+파싱+실행에 10초를 넘길 수 있어 여유를 둔다(짧으면 정상 부팅을 죽여 루프가 된다).
+            var BOOT_TIMEOUT_MS = 20000;
+            var RECHECK_INTERVAL_MS = 5000; // 반복 검사 주기
+            var RETRY_MS = 7000; // 같은 페이지 안에서 navigation 재시도 간격(stall 대비)
+            var MIN_RELOAD_INTERVAL_MS = 5000; // 재로드 루프 최소 간격(sessionStorage 기준)
+            var LAST_RELOAD_KEY = "app:boot-guard-last-reload";
+            var startedAt = Date.now();
+            var lastAttemptAt = 0;
+            // dev(localhost)는 첫 변환이 느릴 수 있어 가드를 걸지 않는다.
+            if (/^(localhost|127\.)/.test(window.location.hostname)) return;
+
+            /** 캐시 우회 강제 새로고침을 시도한다(페이싱 + stall 재시도). */
+            function attemptReload() {
+                var now = Date.now();
+                if (lastAttemptAt > 0 && now - lastAttemptAt < RETRY_MS) return; // 직전 navigation 대기
+                lastAttemptAt = now;
+                var wait = 0;
+                try {
+                    var last = Number(window.sessionStorage.getItem(LAST_RELOAD_KEY) || 0);
+                    var elapsed = now - last;
+                    if (last > 0 && elapsed >= 0 && elapsed < MIN_RELOAD_INTERVAL_MS) {
+                        wait = MIN_RELOAD_INTERVAL_MS - elapsed;
+                    }
+                } catch (e) { /* 스토리지 불가는 무시 */ }
+                setTimeout(function () {
+                    try {
+                        try { window.sessionStorage.setItem(LAST_RELOAD_KEY, String(Date.now())); } catch (e) {}
+                        var url = new URL(window.location.href);
+                        url.searchParams.set("_cb", String(Date.now()));
+                        window.location.replace(url.toString());
+                    } catch (e) { window.location.reload(); }
+                }, wait);
+            }
+
+            var timer = setInterval(function () {
+                try {
+                    // main 번들이 실행됐으면(느린 회선의 정상 부팅 포함) 감시를 끝낸다.
+                    if (window.__appMainLoaded) { clearInterval(timer); return; }
+                    // 유예 시간 내에는 조용히 대기한다(느린 회선 정상 부팅 보호).
+                    if (Date.now() - startedAt < BOOT_TIMEOUT_MS) return;
+                    attemptReload();
+                } catch (e) { /* 가드 자체 오류는 무시하고 다음 주기에 재시도 */ }
+            }, RECHECK_INTERVAL_MS);
+        })();</script></body></html>
