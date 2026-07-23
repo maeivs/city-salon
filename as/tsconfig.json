@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "lib": ["ES2022"],
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "paths": {
+            "entity-client": ["./node_modules/entity-client/src/index.ts"],
+            "entity-client/packet": [
+                "./node_modules/entity-client/src/packet.ts"
+            ],
+            "@system/api": ["./system-api"],
+            "@hooks/*": ["./app/hooks/*"],
+            "@app/*": ["./app/*"],
+            "@utils/*": ["./app/utils/*"]
+        }
+    }
+}

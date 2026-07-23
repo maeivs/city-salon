@@ -1,0 +1,16 @@
+[
+    {
+        "code": "promo_banner",
+        "description": "프로모션 배너",
+        "msgType": "image",
+        "content": "안녕하세요 {{name}}님!\n지금 바로 {{discount}}% 할인 혜택을 받으세요.",
+        "variables": ["name", "discount"]
+    },
+    {
+        "code": "event_notice",
+        "description": "이벤트 공지",
+        "msgType": "text",
+        "content": "{{event_title}}\n\n{{event_desc}}\n\n기간: {{start_date}} ~ {{end_date}}",
+        "variables": ["event_title", "event_desc", "start_date", "end_date"]
+    }
+]

@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "vapidPublicKey": "${WEB_PUSH_VAPID_PUBLIC_KEY}",
+    "vapidPrivateKey": "${WEB_PUSH_VAPID_PRIVATE_KEY}",
+    "vapidSubject": "${WEB_PUSH_VAPID_SUBJECT}"
+}

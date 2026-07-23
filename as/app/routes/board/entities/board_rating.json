@@ -1,0 +1,114 @@
+{
+    "name": "board_rating",
+    "description": "게시글/답글/댓글 별점 (1~5)",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "target_type": {
+            "required": true,
+            "type": ["post", "comment"],
+            "comment": "별점 대상 유형 (post=게시글/답글, comment=댓글)"
+        },
+        "target_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "대상 엔티티 seq (board_post.seq 또는 board_comment.seq)"
+        },
+        "account_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "평가한 account seq"
+        },
+        "score": {
+            "required": true,
+            "type": ["1", "2", "3", "4", "5"],
+            "comment": "별점 (1~5)"
+        }
+    },
+    "unique": ["target_type", "target_seq", "account_seq"],
+    "hooks": {
+        "after_insert": [
+            {
+                "description": "게시글/답글 별점 캐시 갱신",
+                "type": "update",
+                "entity": "board_post",
+                "condition": "${new.target_type} == 'post'",
+                "match": {
+                    "seq": "${new.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} + ${new.score}",
+                    "rating_count": "${target.rating_count} + 1"
+                }
+            },
+            {
+                "description": "댓글 별점 캐시 갱신",
+                "type": "update",
+                "entity": "board_comment",
+                "condition": "${new.target_type} == 'comment'",
+                "match": {
+                    "seq": "${new.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} + ${new.score}",
+                    "rating_count": "${target.rating_count} + 1"
+                }
+            }
+        ],
+        "after_update": [
+            {
+                "description": "게시글/답글 별점 수정 시 합계 보정",
+                "type": "update",
+                "entity": "board_post",
+                "condition": "${new.target_type} == 'post'",
+                "match": {
+                    "seq": "${new.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} - ${old.score} + ${new.score}"
+                }
+            },
+            {
+                "description": "댓글 별점 수정 시 합계 보정",
+                "type": "update",
+                "entity": "board_comment",
+                "condition": "${new.target_type} == 'comment'",
+                "match": {
+                    "seq": "${new.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} - ${old.score} + ${new.score}"
+                }
+            }
+        ],
+        "after_delete": [
+            {
+                "description": "게시글/답글 별점 취소 캐시 보정",
+                "type": "update",
+                "entity": "board_post",
+                "condition": "${old.target_type} == 'post'",
+                "match": {
+                    "seq": "${old.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} - ${old.score}",
+                    "rating_count": "${target.rating_count} - 1"
+                }
+            },
+            {
+                "description": "댓글 별점 취소 캐시 보정",
+                "type": "update",
+                "entity": "board_comment",
+                "condition": "${old.target_type} == 'comment'",
+                "match": {
+                    "seq": "${old.target_seq}"
+                },
+                "data": {
+                    "rating_sum": "${target.rating_sum} - ${old.score}",
+                    "rating_count": "${target.rating_count} - 1"
+                }
+            }
+        ]
+    }
+}

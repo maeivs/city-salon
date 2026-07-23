@@ -1,0 +1,14 @@
+{
+    "name": "account",
+    "description": "휴면 스케줄(dormancy) 전용 필드. dormancy 스케줄이 활성화될 때 account 엔티티에 추가됩니다.",
+    "fields": {
+        "dormancy_warned_days": {
+            "type": "uint",
+            "comment": "가장 최근에 발송한 휴면 경고 D-일수 (중복 발송 방지). 로그인 및 휴면 복귀 시 Go 서버에 의해 0으로 초기화됩니다."
+        },
+        "passwd_expiry_warned_days": {
+            "type": "uint",
+            "comment": "가장 최근에 발송한 비밀번호 만료 경고 D-일수 (중복 발송 방지). 비밀번호 변경 시 0으로 초기화됩니다."
+        }
+    }
+}

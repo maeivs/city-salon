@@ -1,0 +1,23 @@
+{
+    "name": "board_tag",
+    "description": "게시글 태그",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "name": {
+            "required": true,
+            "unique": true,
+            "comment": "태그 슬러그 (예: javascript, vue-js) — lowercase, 하이픈 허용"
+        },
+        "label": {
+            "required": true,
+            "comment": "표시명 (예: JavaScript, Vue.js)"
+        },
+        "use_count": {
+            "type": "uint",
+            "default": "0",
+            "comment": "사용 횟수 캐시 (board_post_tag hook으로 갱신)"
+        }
+    }
+}

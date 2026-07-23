@@ -1,0 +1,24 @@
+{
+    "name": "privacy_cron_lock",
+    "description": "개인정보보호 배치 작업의 분산 락. 다중 인스턴스 환경에서 중복 실행을 방지합니다.",
+    "index_table_only": true,
+    "fields": {
+        "job_name": {
+            "type": "varchar(64)",
+            "required": true,
+            "unique": true,
+            "comment": "배치 작업 식별자 (e.g., dormancy:2024-01-15)"
+        },
+        "locked_by": {
+            "type": "varchar(128)",
+            "comment": "락을 획득한 인스턴스 식별자 (hostname:pid)"
+        },
+        "locked_time": {
+            "comment": "락 획득 시각"
+        },
+        "expires_time": {
+            "index": true,
+            "comment": "락 만료 시각 (이 시각 이후 stale lock으로 처리)"
+        }
+    }
+}

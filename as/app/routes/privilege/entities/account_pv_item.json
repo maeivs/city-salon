@@ -1,0 +1,35 @@
+{
+    "name": "account_pv_item",
+    "index_table_only": true,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "account_seq": {
+            "index": true,
+            "comment": "계정seq"
+        },
+        "pv_item_seq": {
+            "index": true,
+            "comment": "권한seq"
+        }
+    },
+    "unique": [
+        [
+            "account_seq",
+            "pv_item_seq"
+        ]
+    ],
+    "reset_defaults": [
+        {
+            "account_email": "admin1@${DEFAULT_EMAIL_DOMAIN}",
+            "item_name": "모든 권한"
+        },
+        {
+            "account_email": "admin2@${DEFAULT_EMAIL_DOMAIN}",
+            "item_name": "모든 권한"
+        },
+        {
+            "account_email": "admin3@${DEFAULT_EMAIL_DOMAIN}",
+            "item_name": "모든 권한"
+        }
+    ]
+}

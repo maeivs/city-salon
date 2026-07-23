@@ -1,0 +1,23 @@
+{
+    "name": "account",
+    "description": "이메일 인증(email-verify) 라우트 전용 필드. email_verified 상태에 따른 처리(인증 메일 발송/검증/차단)는 앱서버 email-verify 라우트가 담당합니다.",
+    "fields": {
+        "email_verified": {
+            "type": "bool",
+            "default": false,
+            "comment": "이메일 인증 완료 여부"
+        },
+        "email_verify_code": {
+            "type": "varchar(64)",
+            "comment": "인증 코드 SHA-256 해시"
+        },
+        "email_verify_expires_time": {
+            "comment": "인증 코드 만료 시각 (RFC3339)"
+        },
+        "email_verify_attempts": {
+            "type": "uint",
+            "default": 0,
+            "comment": "이메일 인증 시도 횟수"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "account",
+    "description": "2FA(TOTP) 활성화 시 account 엔티티에 추가되는 필드 정의. enabled=true 시 앱서버 시작 때 entity 서버에 additive-sync 됩니다.",
+    "fields": {
+        "totp_secret": {
+            "type": "varchar(64)",
+            "comment": "TOTP 비밀 키 (Base32, 암호화 저장)"
+        },
+        "totp_enabled": {
+            "type": "bool",
+            "default": false,
+            "comment": "2FA 활성화 여부"
+        },
+        "totp_enabled_time": {
+            "comment": "2FA 활성화 시각"
+        },
+        "totp_recovery_codes": {
+            "type": "varchar(500)",
+            "comment": "복구 코드 JSON 배열 (SHA-256 해시, 암호화 저장)"
+        },
+        "totp_failed_attempts": {
+            "type": "uint",
+            "default": 0,
+            "comment": "연속 TOTP 실패 횟수"
+        },
+        "totp_locked_until": {
+            "comment": "TOTP 잠금 해제 시각"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "enabled": false,
+    "default": "nice",
+    "return_url": "/v1/identity/callback",
+    "success_redirect_url": "",
+    "failure_redirect_url": "",
+    "duplicate_ci_check": true,
+    "request_ttl_sec": 300,
+    "result_ttl_sec": 600,
+    "providers": {
+        "nice": {
+            "driver": "nice",
+            "_comment": "NICE 본인인증",
+            "site_code": "${NICE_SITE_CODE}",
+            "site_password": "${NICE_SITE_PASSWORD}",
+            "client_id": "${NICE_CLIENT_ID}",
+            "client_secret": "${NICE_CLIENT_SECRET}",
+            "product_id": "2101979031",
+            "api_url": "https://nice.checkplus.co.kr",
+            "token_url": "https://svc.niceapi.co.kr:22001/digital/niceid/oauth/oauth/token",
+            "crypto_url": "https://svc.niceapi.co.kr:22001/digital/niceid/v1.0/common/crypto/token"
+        },
+        "kmc": {
+            "driver": "kmc",
+            "_comment": "KMC 본인인증",
+            "site_code": "${KMC_SITE_CODE}",
+            "site_password": "${KMC_SITE_PASSWORD}",
+            "api_url": "https://www.kmcert.com"
+        },
+        "danal": {
+            "driver": "danal",
+            "_comment": "Danal 본인인증",
+            "cp_cd": "${DANAL_CP_CD}",
+            "url_cd": "${DANAL_URL_CD}",
+            "cert_key": "${DANAL_CERT_KEY}",
+            "api_url": "https://cert.danal.co.kr"
+        }
+    },
+    "rate_limit": {
+        "per_ip_per_hour": 10,
+        "per_account_per_day": 5
+    }
+}

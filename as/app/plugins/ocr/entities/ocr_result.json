@@ -1,0 +1,99 @@
+{
+    "name": "ocr_result",
+    "description": "OCR 처리 결과 저장. 비동기 작업 상태 추적 및 결과 재사용을 위한 캐시 역할.",
+    "compress": true,
+    "fields": {
+        "ocr_id": {
+            "type": "varchar(36)",
+            "comment": "결과 고유 ID (UUID)",
+            "required": true,
+            "unique": true
+        },
+        "file_seq": {
+            "index": true,
+            "nullable": true,
+            "comment": "파일 seq (uploads 테이블 참조)",
+            "type": "bigint"
+        },
+        "file_hash": {
+            "index": true,
+            "comment": "파일 SHA-256 해시 (중복 인식 방지)",
+            "type": "varchar(64)",
+            "required": true
+        },
+        "provider": {
+            "index": true,
+            "comment": "사용된 OCR 드라이버 (google, naver, aws_textract, azure, upstage, tesseract)",
+            "type": "varchar(30)",
+            "required": true
+        },
+        "doc_type": {
+            "index": true,
+            "comment": "문서 유형 (general, business_reg, receipt, invoice, namecard, id_card, driver_license, facility_card, career_cert)",
+            "type": "varchar(30)",
+            "required": true
+        },
+        "state": {
+            "index": true,
+            "comment": "처리 상태 (pending, processing, completed, failed)",
+            "type": "varchar(20)",
+            "required": true,
+            "default": "pending"
+        },
+        "parse_method": {
+            "nullable": true,
+            "comment": "파싱 방법 (none, template, llm)",
+            "type": "varchar(20)"
+        },
+        "ref_table": {
+            "index": true,
+            "nullable": true,
+            "comment": "연관 테이블명"
+        },
+        "ref_seq": {
+            "index": true,
+            "nullable": true,
+            "comment": "연관 레코드 seq",
+            "type": "bigint"
+        },
+        "text": {
+            "nullable": true,
+            "comment": "OCR 추출 전체 텍스트",
+            "type": "text"
+        },
+        "pages": {
+            "nullable": true,
+            "comment": "페이지별 블록 데이터 (JSON)",
+            "type": "json"
+        },
+        "parsed": {
+            "nullable": true,
+            "comment": "파싱된 구조화 데이터 (JSON)",
+            "type": "json"
+        },
+        "confidence": {
+            "nullable": true,
+            "comment": "인식 신뢰도 (0.0~1.0)",
+            "type": "decimal(5,4)"
+        },
+        "processing_ms": {
+            "nullable": true,
+            "comment": "처리 시간 (밀리초)",
+            "type": "int"
+        },
+        "provider_raw": {
+            "nullable": true,
+            "comment": "프로바이더 원본 응답 (JSON)",
+            "type": "json"
+        },
+        "error_message": {
+            "nullable": true,
+            "comment": "처리 실패 시 오류 메시지"
+        },
+        "user_seq": {
+            "nullable": true,
+            "comment": "요청 사용자 seq"
+        }
+    },
+    "indexes": [["file_hash", "provider", "doc_type"]]
+}

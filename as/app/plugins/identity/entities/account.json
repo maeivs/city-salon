@@ -1,0 +1,27 @@
+{
+    "name": "account",
+    "description": "본인인증(identity) 플러그인 활성화 시 account 엔티티에 추가되는 필드 정의. enabled=true 시 앱서버 시작 때 entity 서버에 additive-sync 됩니다.",
+    "fields": {
+        "ci_hash": {
+            "type": "string",
+            "comment": "본인인증 CI 해시 (SHA-256, 중복가입 방지)"
+        },
+        "identity_verified": {
+            "type": "bool",
+            "default": false,
+            "comment": "본인인증 완료 여부"
+        },
+        "identity_name": {
+            "type": "string",
+            "comment": "인증된 실명"
+        },
+        "identity_birth_date": {
+            "type": "string",
+            "comment": "인증된 생년월일 (YYYYMMDD)"
+        },
+        "identity_gender": {
+            "type": "string",
+            "comment": "인증된 성별 (M/F)"
+        }
+    }
+}

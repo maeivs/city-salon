@@ -1,0 +1,182 @@
+{
+    "name": "pv_item",
+    "description": "권한항목.",
+    "index_table_only": true,
+    "license_scope": false,
+    "hard_delete": true,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "parent_seq": {
+            "index": true,
+            "comment": "부모seq"
+        },
+        "name": {
+            "comment": "권한명",
+            "unique": true
+        },
+        "readonly": {
+            "type": "boolean",
+            "comment": "수정불가여부"
+        },
+        "remark": {
+            "comment": "설명"
+        }
+    },
+    "reset_defaults": [
+        {
+            "name": "모든 권한",
+            "readonly": true,
+            "remark": "최상위 권한"
+        },
+        {
+            "parent_name": "모든 권한",
+            "name": "시스템 설정",
+            "readonly": true
+        },
+        {
+            "parent_name": "모든 권한",
+            "name": "계정관리",
+            "readonly": true
+        },
+        {
+            "parent_name": "계정관리",
+            "name": "계정목록조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "계정관리",
+            "name": "계정정보조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "계정관리",
+            "name": "계정권한관리",
+            "readonly": true
+        },
+        {
+            "parent_name": "계정관리",
+            "name": "계정등록수정",
+            "readonly": true
+        },
+        {
+            "parent_name": "모든 권한",
+            "name": "인사관리",
+            "readonly": true
+        },
+        {
+            "parent_name": "인사관리",
+            "name": "직원목록조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "인사관리",
+            "name": "직원정보조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원기본정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원개인정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원학력경력정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원가족정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원근로계약정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원차량정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "직원정보조회",
+            "name": "직원보험세금정보",
+            "readonly": true
+        },
+        {
+            "parent_name": "인사관리",
+            "name": "직원등록수정",
+            "readonly": true
+        },
+        {
+            "parent_name": "인사관리",
+            "name": "경력관리",
+            "readonly": true
+        },
+        {
+            "parent_name": "경력관리",
+            "name": "경력목록조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "경력관리",
+            "name": "경력정보조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "경력관리",
+            "name": "경력등록수정",
+            "readonly": true
+        },
+        {
+            "parent_name": "인사관리",
+            "name": "교육관리",
+            "readonly": true
+        },
+        {
+            "parent_name": "교육관리",
+            "name": "교육목록조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "교육관리",
+            "name": "교육정보조회",
+            "readonly": true
+        },
+        {
+            "parent_name": "교육관리",
+            "name": "교육등록수정",
+            "readonly": true
+        },
+        {
+            "parent_name": "모든 권한",
+            "name": "엑셀다운로드",
+            "readonly": true
+        },
+        {
+            "parent_name": "엑셀다운로드",
+            "name": "직원목록엑셀다운",
+            "readonly": true
+        },
+        {
+            "parent_name": "엑셀다운로드",
+            "name": "경력목록엑셀다운",
+            "readonly": true
+        },
+        {
+            "parent_name": "엑셀다운로드",
+            "name": "교육목록엑셀다운",
+            "readonly": true
+        },
+        {
+            "parent_name": "엑셀다운로드",
+            "name": "로그인기록엑셀다운",
+            "readonly": true
+        }
+    ]
+}

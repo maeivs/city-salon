@@ -1,0 +1,27 @@
+[
+    {
+        "code": "welcome",
+        "description": "회원가입 환영",
+        "variables": ["name", "date"]
+    },
+    {
+        "code": "order_confirm",
+        "description": "주문 확인",
+        "variables": ["name", "order_no", "product", "amount"]
+    },
+    {
+        "code": "delivery_start",
+        "description": "배송 시작 안내",
+        "variables": ["name", "order_no", "carrier", "tracking_no"]
+    },
+    {
+        "code": "appointment_remind",
+        "description": "예약 리마인더",
+        "variables": ["name", "datetime", "location", "staff"]
+    },
+    {
+        "code": "password_reset",
+        "description": "비밀번호 재설정",
+        "variables": ["name", "code"]
+    }
+]

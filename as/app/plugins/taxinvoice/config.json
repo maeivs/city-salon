@@ -1,0 +1,61 @@
+{
+    "enabled": false,
+    "default": "barobill",
+    "workers": 2,
+    "queue_size": 100,
+    "dispatch_interval_sec": 10,
+    "max_retries": 3,
+    "providers": {
+        "barobill": {
+            "driver": "barobill",
+            "_comment": "바로빌",
+            "cert_key": "${BAROBILL_CERT_KEY}",
+            "corp_num": "${BAROBILL_CORP_NUM}",
+            "user_id": "${BAROBILL_USER_ID}",
+            "api_endpoint": "https://barobill.co.kr/TAPI/TaxInvoiceService.asmx",
+            "corp_state_endpoint": "https://ws.baroservice.com/CorpState.asmx",
+            "timeout_sec": 30
+        },
+        "ezero": {
+            "driver": "ezero",
+            "_comment": "이지로 (EZERO)",
+            "cert_key": "${EZERO_CERT_KEY}",
+            "corp_num": "${EZERO_CORP_NUM}",
+            "user_id": "${EZERO_USER_ID}",
+            "api_endpoint": "https://www.ezero.co.kr/tax-invoice/api",
+            "timeout_sec": 30
+        },
+        "popbill": {
+            "driver": "popbill",
+            "_comment": "팝빌 (Popbill)",
+            "link_id": "${POPBILL_LINK_ID}",
+            "secret_key": "${POPBILL_SECRET_KEY}",
+            "corp_num": "${POPBILL_CORP_NUM}",
+            "api_url": "https://www.popbill.com",
+            "timeout_sec": 30
+        },
+        "ktnet": {
+            "driver": "ktnet",
+            "_comment": "KT-NET 세금계산서",
+            "cert_key": "${KTNET_CERT_KEY}",
+            "corp_num": "${KTNET_CORP_NUM}",
+            "user_id": "${KTNET_USER_ID}",
+            "api_endpoint": "https://www.b2b.kt.com/einvoice",
+            "timeout_sec": 30
+        }
+    },
+    "nts": {
+        "auto_send": false,
+        "taxation_option": 1,
+        "taxation_add_tax_allow": 0,
+        "tax_exemption_option": 1,
+        "tax_exemption_add_tax_allow": 0
+    },
+    "notify": ["log"],
+    "sync": {
+        "enabled": false,
+        "interval_sec": 600,
+        "state_sync_interval_min": 10,
+        "max_list_days": 200
+    }
+}

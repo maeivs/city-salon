@@ -1,0 +1,33 @@
+{
+    "name": "pv_group_item",
+    "description": "pv_group_item 엔티티.",
+    "index_table_only": true,
+    "license_scope": false,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "group_seq": {
+            "index": true,
+            "comment": "그룹seq"
+        },
+        "item_seq": {
+            "index": true,
+            "comment": "권한seq"
+        }
+    },
+    "unique": [
+        [
+            "group_seq",
+            "item_seq"
+        ]
+    ],
+    "reset_defaults": [
+        {
+            "group_name": "관리자",
+            "item_name": "모든 권한"
+        },
+        {
+            "group_name": "인사담당자",
+            "item_name": "인사관리"
+        }
+    ]
+}

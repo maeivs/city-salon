@@ -1,0 +1,59 @@
+{
+    "name": "llm_conversation",
+    "description": "LLM 멀티턴 대화 세션. 챗봇 히스토리 저장 및 복원용.",
+    "fields": {
+        "user_seq": {
+            "index": true,
+            "comment": "대화 소유 사용자",
+            "required": true
+        },
+        "provider_name": {
+            "index": true,
+            "comment": "LLM 프로바이더 이름 (llm.json 키)",
+            "type": "varchar(50)",
+            "required": true
+        },
+        "title": {
+            "index": true,
+            "comment": "대화 제목 (첫 메시지 요약 또는 사용자 지정)",
+            "type": "varchar(200)",
+            "required": true
+        },
+        "status": {
+            "index": true,
+            "comment": "대화 상태",
+            "type": ["active", "archived"],
+            "default": "active"
+        },
+        "message_count": {
+            "index": true,
+            "comment": "총 메시지 수 (user + assistant)",
+            "type": "int",
+            "default": 0
+        },
+        "total_tokens": {
+            "index": true,
+            "comment": "누적 토큰 사용량",
+            "type": "int",
+            "default": 0
+        },
+        "system_msg": {
+            "type": "text",
+            "nullable": true,
+            "comment": "세션 고정 시스템 프롬프트"
+        },
+        "messages": {
+            "type": "json",
+            "comment": "대화 메시지 배열 [{role, content}, ...]"
+        },
+        "last_message": {
+            "type": "string",
+            "nullable": true,
+            "comment": "마지막 메시지 요약 (목록 표시용)"
+        },
+        "model": {
+            "type": "varchar(100)",
+            "comment": "사용된 모델명"
+        }
+    }
+}

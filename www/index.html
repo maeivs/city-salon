@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="<%- faviconType %>" href="<%- favicon %>" />
+
+    <!-- 기본 메타 태그 -->
+    <title><%- title %></title>
+    <meta name="description" content="<%- description %>" />
+    <meta name="keywords" content="<%- keywords %>" />
+    <meta name="author" content="<%- author %>" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="<%- url %>" />
+
+    <!-- Open Graph 메타 태그 -->
+    <meta property="og:title" content="<%- title %>" />
+    <meta property="og:description" content="<%- description %>" />
+    <meta property="og:url" content="<%- url %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="<%- siteName %>" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content="<%- ogImage %>" />
+    <meta property="og:image:width" content="<%- ogImageWidth %>" />
+    <meta property="og:image:height" content="<%- ogImageHeight %>" />
+
+    <!-- Twitter Card 메타 태그 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%- title %>" />
+    <meta name="twitter:description" content="<%- description %>" />
+    <meta name="twitter:image" content="<%- ogImage %>" />
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- 새로고침 직후 JS 번들 로딩 전에 즉시 보이는 순수 CSS 스피너. React 마운트 시 제거된다. -->
+    <div id="initial-loader" aria-hidden="true">
+        <div class="initial-loader__spinner"></div>
+    </div>
+    <style>
+        #initial-loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            z-index: 2147483647;
+        }
+        #initial-loader .initial-loader__spinner {
+            box-sizing: border-box;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 4px solid rgba(28, 64, 125, 0.14);
+            border-top-color: #1c407d;
+            animation: initial-loader-spin 0.75s linear infinite;
+        }
+        @keyframes initial-loader-spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <!--
+        부팅 가드(인라인): 빌드 교체 순간 JS 번들이 404/무응답으로 아예 로드되지 못하면 어떤 앱
+        코드도 실행되지 않아 위 부트 스피너만 영원히 돈다. 이 스크립트는 번들과 무관하게 항상
+        실행되어, 20초가 지나도 main 번들 JS 가 실행되지 않으면(window.__appMainLoaded 미설정)
+        캐시를 우회하는 강제 새로고침(_cb 캐시버스터)을 시도한다. 1회성이 아니라 5초마다 반복
+        검사한다 — location.replace() 문서 요청이 stall 로 무산돼도 다음 주기에 새 캐시버스터로
+        다시 시도하므로 절대 멈춘 채로 남지 않는다. 연속 재로드는 최소 5초 간격을 보장한다.
+        JS 가 실행된 이후의 멈춤은 앱 내부 가드(라우트 오류 복구/현황판 부팅 가드)가 맡는다.
+    -->
+    <script>
+        (function () {
+            // main 번들 실행 대기 한도(첫 검사 시점). 라즈베리파이 콜드 부팅은 main 그래프
+            // 다운로드+파싱+실행에 10초를 넘길 수 있어 여유를 둔다(짧으면 정상 부팅을 죽여 루프가 된다).
+            var BOOT_TIMEOUT_MS = 20000;
+            var RECHECK_INTERVAL_MS = 5000; // 반복 검사 주기
+            var RETRY_MS = 7000; // 같은 페이지 안에서 navigation 재시도 간격(stall 대비)
+            var MIN_RELOAD_INTERVAL_MS = 5000; // 재로드 루프 최소 간격(sessionStorage 기준)
+            var LAST_RELOAD_KEY = "app:boot-guard-last-reload";
+            var startedAt = Date.now();
+            var lastAttemptAt = 0;
+            // dev(localhost)는 첫 변환이 느릴 수 있어 가드를 걸지 않는다.
+            if (/^(localhost|127\.)/.test(window.location.hostname)) return;
+
+            /** 캐시 우회 강제 새로고침을 시도한다(페이싱 + stall 재시도). */
+            function attemptReload() {
+                var now = Date.now();
+                if (lastAttemptAt > 0 && now - lastAttemptAt < RETRY_MS) return; // 직전 navigation 대기
+                lastAttemptAt = now;
+                var wait = 0;
+                try {
+                    var last = Number(window.sessionStorage.getItem(LAST_RELOAD_KEY) || 0);
+                    var elapsed = now - last;
+                    if (last > 0 && elapsed >= 0 && elapsed < MIN_RELOAD_INTERVAL_MS) {
+                        wait = MIN_RELOAD_INTERVAL_MS - elapsed;
+                    }
+                } catch (e) { /* 스토리지 불가는 무시 */ }
+                setTimeout(function () {
+                    try {
+                        try { window.sessionStorage.setItem(LAST_RELOAD_KEY, String(Date.now())); } catch (e) {}
+                        var url = new URL(window.location.href);
+                        url.searchParams.set("_cb", String(Date.now()));
+                        window.location.replace(url.toString());
+                    } catch (e) { window.location.reload(); }
+                }, wait);
+            }
+
+            var timer = setInterval(function () {
+                try {
+                    // main 번들이 실행됐으면(느린 회선의 정상 부팅 포함) 감시를 끝낸다.
+                    if (window.__appMainLoaded) { clearInterval(timer); return; }
+                    // 유예 시간 내에는 조용히 대기한다(느린 회선 정상 부팅 보호).
+                    if (Date.now() - startedAt < BOOT_TIMEOUT_MS) return;
+                    attemptReload();
+                } catch (e) { /* 가드 자체 오류는 무시하고 다음 주기에 재시도 */ }
+            }, RECHECK_INTERVAL_MS);
+        })();
+    </script>
+    <script type="module" src="/src/index.tsx"></script>
+</body>
+
+</html>

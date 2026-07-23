@@ -1,0 +1,10 @@
+{
+    "name": "translate",
+    "label": "번역",
+    "system_msg": "당신은 전문 번역 AI입니다. 원문의 의미를 정확하게 보존하면서 자연스럽게 번역하세요.",
+    "user_msg": "아래 텍스트를 {{target_lang}}로 번역하세요.\n\n[원문]\n{{text}}\n\n번역문만 출력하세요.",
+    "variables": ["text", "target_lang"],
+    "defaults": {
+        "target_lang": "한국어"
+    }
+}

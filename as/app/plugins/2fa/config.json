@@ -1,0 +1,14 @@
+{
+    "enabled": false,
+    "issuer": "MyApp",
+    "code_digits": 6,
+    "period_sec": 30,
+    "skew": 1,
+    "recovery_code_count": 10,
+    "setup_token_ttl_sec": 300,
+    "max_verify_attempts": 5,
+    "verify_lockout_sec": 300,
+    "jwt_access_ttl_sec": 3600,
+    "jwt_refresh_ttl_sec": 1209600,
+    "jwt_issuer": "entity-server"
+}

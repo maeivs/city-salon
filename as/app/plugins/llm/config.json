@@ -1,0 +1,260 @@
+{
+    "enabled": false,
+    "default": "main",
+    "usage_tracking": true,
+    "providers": {
+        "_comment_cloud": "────────────── 클라우드 프로바이더 ──────────────────────────────────",
+
+        "main": {
+            "description": "기본 제공자 (GPT-4o-mini, 범용)",
+            "driver": "openai",
+            "api_key": "${LLM_OPENAI_API_KEY}",
+            "model": "gpt-4o-mini",
+            "embed_model": "text-embedding-3-small",
+            "max_tokens": 2048,
+            "temperature": 0.1,
+            "timeout_sec": 30,
+            "rate_limit_rpm": 60,
+            "json_mode": true
+        },
+        "chatbot": {
+            "description": "챗봇 대화용 (Anthropic Claude — 한국어 우수)",
+            "driver": "anthropic",
+            "api_key": "${LLM_ANTHROPIC_API_KEY}",
+            "model": "claude-sonnet-4-20250514",
+            "max_tokens": 4096,
+            "temperature": 0.7,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 30
+        },
+        "summary": {
+            "description": "문서 요약용 (Gemini — 최저가 대량처리)",
+            "driver": "gemini",
+            "api_key": "${LLM_GEMINI_API_KEY}",
+            "model": "gemini-2.0-flash",
+            "max_tokens": 2048,
+            "temperature": 0.3,
+            "timeout_sec": 30,
+            "rate_limit_rpm": 120
+        },
+        "fast": {
+            "description": "초고속 추론 (Groq — 로컬 수준 레이턴시)",
+            "driver": "groq",
+            "api_key": "${LLM_GROQ_API_KEY}",
+            "base_url": "https://api.groq.com/openai/v1",
+            "model": "llama-3.3-70b-versatile",
+            "max_tokens": 4096,
+            "temperature": 0.7,
+            "timeout_sec": 30,
+            "rate_limit_rpm": 30
+        },
+        "deepseek": {
+            "description": "DeepSeek — 고성능 저비용",
+            "driver": "deepseek",
+            "api_key": "${LLM_DEEPSEEK_API_KEY}",
+            "base_url": "https://api.deepseek.com/v1",
+            "model": "deepseek-chat",
+            "max_tokens": 4096,
+            "temperature": 0.3,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 60
+        },
+        "mistral": {
+            "description": "Mistral AI",
+            "driver": "mistral",
+            "api_key": "${LLM_MISTRAL_API_KEY}",
+            "base_url": "https://api.mistral.ai/v1",
+            "model": "mistral-large-latest",
+            "max_tokens": 4096,
+            "temperature": 0.3,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 30
+        },
+        "together": {
+            "description": "Together.ai — 다양한 오픈소스 모델 호스팅",
+            "driver": "together",
+            "api_key": "${LLM_TOGETHER_API_KEY}",
+            "base_url": "https://api.together.xyz/v1",
+            "model": "meta-llama/Llama-3-70b-chat-hf",
+            "max_tokens": 4096,
+            "temperature": 0.7,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 60
+        },
+        "perplexity": {
+            "description": "Perplexity AI — 실시간 웹 검색 연동",
+            "driver": "perplexity",
+            "api_key": "${LLM_PERPLEXITY_API_KEY}",
+            "base_url": "https://api.perplexity.ai",
+            "model": "sonar-pro",
+            "max_tokens": 2048,
+            "temperature": 0.3,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 30
+        },
+        "azure": {
+            "description": "Azure OpenAI — base_url: https://<resource>.openai.azure.com, model: deployment명",
+            "driver": "azure_openai",
+            "api_key": "${LLM_AZURE_API_KEY}",
+            "base_url": "https://${LLM_AZURE_RESOURCE}.openai.azure.com",
+            "model": "${LLM_AZURE_CHAT_DEPLOYMENT}",
+            "embed_model": "${LLM_AZURE_EMBED_DEPLOYMENT}",
+            "api_version": "2024-12-01-preview",
+            "max_tokens": 4096,
+            "temperature": 0.1,
+            "timeout_sec": 60,
+            "rate_limit_rpm": 60,
+            "json_mode": true
+        },
+
+        "_comment_local": "────────────── 로컬 설치형 프로바이더 ───────────────────────────────",
+
+        "ollama": {
+            "description": "Ollama — 가장 널리 쓰이는 로컬 LLM 런타임 (독자 API)",
+            "driver": "ollama",
+            "base_url": "http://localhost:11434",
+            "model": "llama3.2:3b",
+            "embed_model": "nomic-embed-text",
+            "max_tokens": 2048,
+            "temperature": 0.5,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "vllm": {
+            "description": "vLLM — 고성능 배치 추론 서버 (OpenAI 호환, 기본 포트 8000)",
+            "driver": "vllm",
+            "base_url": "http://localhost:8000",
+            "model": "meta-llama/Llama-3.1-8B-Instruct",
+            "embed_model": "BAAI/bge-m3",
+            "max_tokens": 4096,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 20
+        },
+        "lmstudio": {
+            "description": "LM Studio — GUI 기반 로컬 LLM, 내장 서버 (OpenAI 호환, 기본 포트 1234)",
+            "driver": "lmstudio",
+            "base_url": "http://localhost:1234",
+            "model": "local-model",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "llamacpp": {
+            "description": "llama.cpp — 경량 CPU/GPU GGUF 서버 (OpenAI 호환, 기본 포트 8080)",
+            "driver": "llamacpp",
+            "base_url": "http://localhost:8080",
+            "model": "local",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 5
+        },
+        "koboldcpp": {
+            "description": "KoboldCpp — 경량 GGUF 런타임, 창작/RP 특화 (OpenAI 호환, 기본 포트 5001)",
+            "driver": "koboldcpp",
+            "base_url": "http://localhost:5001",
+            "model": "local",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 5
+        },
+        "tgw": {
+            "description": "Text Generation WebUI (oobabooga) — 다양한 백엔드 지원 (OpenAI 호환, 기본 포트 5000)",
+            "driver": "text_generation_webui",
+            "base_url": "http://localhost:5000",
+            "model": "local",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 5
+        },
+        "localai": {
+            "description": "LocalAI — 다양한 포맷(GGUF/ONNX/whisper 등) 지원 (OpenAI 호환, 기본 포트 8080)",
+            "driver": "localai",
+            "base_url": "http://localhost:8080",
+            "model": "gpt-3.5-turbo",
+            "embed_model": "text-embedding-ada-002",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "tabbyapi": {
+            "description": "TabbyAPI — ExLlamaV2 기반 고성능 GGUF/EXL2 서버 (OpenAI 호환, 기본 포트 5000)",
+            "driver": "tabbyapi",
+            "base_url": "http://localhost:5000",
+            "api_key": "${TABBYAPI_ADMIN_KEY}",
+            "model": "local",
+            "max_tokens": 4096,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "jan": {
+            "description": "Jan Desktop — 크로스플랫폼 로컬 LLM 앱 (OpenAI 호환, 기본 포트 1337)",
+            "driver": "jan",
+            "base_url": "http://localhost:1337",
+            "model": "llama3.2-3b-instruct",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "xinference": {
+            "description": "Xinference — 다중 모델 타입(LLM/임베딩/이미지 등) 로컬 서버 (OpenAI 호환, 기본 포트 9997)",
+            "driver": "xinference",
+            "base_url": "http://localhost:9997",
+            "model": "qwen2.5-instruct",
+            "embed_model": "bge-m3",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        },
+        "openwebui": {
+            "description": "Open WebUI — Ollama/OpenAI 통합 프록시 (OpenAI 호환, 기본 포트 3000)",
+            "driver": "openwebui",
+            "base_url": "http://localhost:3000",
+            "api_key": "${OPENWEBUI_TOKEN}",
+            "model": "llama3.2:3b",
+            "max_tokens": 2048,
+            "temperature": 0.7,
+            "timeout_sec": 120,
+            "rate_limit_rpm": 10
+        }
+    },
+    "cache": {
+        "enabled": true,
+        "ttl_seconds": 3600,
+        "max_entries": 10000,
+        "exclude_providers": [
+            "ollama",
+            "vllm",
+            "lmstudio",
+            "llamacpp",
+            "koboldcpp",
+            "tgw",
+            "localai",
+            "tabbyapi",
+            "jan",
+            "xinference",
+            "openwebui"
+        ]
+    },
+    "rag": {
+        "enabled": true,
+        "embed_provider": "main",
+        "default_chunk_size": 500,
+        "default_chunk_overlap": 50,
+        "default_top_k": 5,
+        "default_min_score": 0.7
+    },
+    "quota": {
+        "daily_token_limit": 1000000,
+        "monthly_token_limit": 20000000,
+        "notify": ["log", "smtp"]
+    }
+}

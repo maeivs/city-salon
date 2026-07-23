@@ -1,0 +1,42 @@
+{
+    "name": "board_post_tag",
+    "description": "게시글-태그 연결 (M:N)",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "post_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "board_post seq"
+        },
+        "tag_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "board_tag seq"
+        }
+    },
+    "unique": ["post_seq", "tag_seq"],
+    "fk": {
+        "post_seq": "board_post.seq",
+        "tag_seq": "board_tag.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "type": "update",
+                "entity": "board_tag",
+                "match": { "seq": "${new.tag_seq}" },
+                "data": { "use_count": "${target.use_count} + 1" }
+            }
+        ],
+        "after_delete": [
+            {
+                "type": "update",
+                "entity": "board_tag",
+                "match": { "seq": "${old.tag_seq}" },
+                "data": { "use_count": "${target.use_count} - 1" }
+            }
+        ]
+    }
+}

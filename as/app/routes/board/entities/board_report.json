@@ -1,0 +1,37 @@
+{
+    "name": "board_report",
+    "description": "게시글·댓글 신고",
+    "fields": {
+        "target_type": {
+            "type": ["post", "comment"],
+            "required": true,
+            "comment": "신고 대상 유형"
+        },
+        "target_seq": {
+            "index": true,
+            "required": true,
+            "type": "uint",
+            "comment": "대상 seq (board_post 또는 board_comment)"
+        },
+        "account_seq": {
+            "index": true,
+            "required": true,
+            "type": "uint",
+            "comment": "신고한 회원 seq"
+        },
+        "reason": {
+            "type": ["spam", "abuse", "illegal", "other"],
+            "required": true,
+            "comment": "신고 사유"
+        },
+        "detail": {
+            "comment": "신고 상세 내용 (선택)"
+        },
+        "status": {
+            "type": ["pending", "resolved", "dismissed"],
+            "default": "pending",
+            "comment": "처리 상태. pending=미처리, resolved=처리완료, dismissed=기각"
+        }
+    },
+    "unique": ["target_type", "target_seq", "account_seq"]
+}

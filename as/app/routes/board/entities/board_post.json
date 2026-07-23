@@ -1,0 +1,257 @@
+{
+    "name": "board_post",
+    "description": "게시판 원글 및 답글 (자기참조 트리)",
+    "fields": {
+        "category_name": {
+            "index": true,
+            "required": true,
+            "comment": "게시판 카테고리 이름"
+        },
+        "account_seq": {
+            "index": true,
+            "type": "uint",
+            "comment": "작성자 account seq (비회원이면 null)"
+        },
+        "author_name": {
+            "index": true,
+            "required": true,
+            "comment": "작성자 표시 이름 (회원: 닉네임, 비회원: 입력값)"
+        },
+        "guest_password": {
+            "comment": "비회원 비밀번호 (bcrypt 해시, 비회원 글만 사용)"
+        },
+        "title": {
+            "index": true,
+            "required": true,
+            "comment": "제목"
+        },
+        "content": {
+            "required": false,
+            "comment": "본문 (HTML or Markdown)"
+        },
+        "text_length": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "strip_tags(content) 후 trim한 텍스트 길이 (빈 본문 판정용)"
+        },
+        "post_type": {
+            "index": true,
+            "comment": "게시판별 글 분류 코드"
+        },
+        "valid_from": {
+            "index": true,
+            "type": "datetime",
+            "comment": "게시 유효 시작 일시"
+        },
+        "valid_to": {
+            "index": true,
+            "type": "datetime",
+            "comment": "게시 유효 종료 일시"
+        },
+        "status": {
+            "index": true,
+            "type": ["published", "draft", "deleted", "hidden"],
+            "default": "published",
+            "comment": "글 상태"
+        },
+        "pinned": {
+            "index": true,
+            "type": "bool",
+            "default": false,
+            "comment": "상단 고정 여부"
+        },
+        "view_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "조회수"
+        },
+        "reply_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "답글 수 (캐시, root_seq 기준 모든 하위 depth 포함)"
+        },
+        "comment_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "댓글 수 (캐시)"
+        },
+        "file_count": {
+            "type": "uint",
+            "default": "0",
+            "comment": "첨부파일 수 (캐시, 앱서버에서 업로드/삭제 시 갱신)"
+        },
+        "parent_seq": {
+            "index": true,
+            "type": "uint",
+            "comment": "부모 글 seq (null=원글, 값 있으면 답글)"
+        },
+        "root_seq": {
+            "index": true,
+            "type": "uint",
+            "comment": "최상위 원글 seq (답글 조회 필터링용, 원글은 자기 자신 seq)"
+        },
+        "depth": {
+            "type": "uint",
+            "default": "0",
+            "comment": "깊이 (0=원글, 1=직접 답변, 2=대답변, ...)"
+        },
+        "like_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "좋아요 수 (캐시)"
+        },
+        "rating_sum": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "별점 합계 (캐시, rating_avg = rating_sum / rating_count)"
+        },
+        "rating_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "별점 참여 수 (캐시)"
+        },
+        "accepted": {
+            "index": true,
+            "type": "bool",
+            "default": false,
+            "comment": "채택된 답변 여부 (accept_enabled 게시판의 답글에만 사용)"
+        }
+    },
+    "fk": {
+        "parent_seq": "board_post.seq",
+        "root_seq": "board_post.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "description": "답글 작성 시 원글의 reply_count 증가 (root_seq 기준, depth에 관계없이 모든 하위 답글을 원글 1건으로 카운트)",
+                "type": "update",
+                "entity": "board_post",
+                "condition": "${new.parent_seq} != null",
+                "match": {
+                    "seq": "${new.root_seq}"
+                },
+                "data": {
+                    "reply_count": "${target.reply_count} + 1"
+                }
+            },
+            {
+                "description": "글 등록 시 카테고리 push_on_write=true이면 관리자에게 push 알림",
+                "type": "push",
+                "condition": "category.push_on_write == true",
+                "title": "[category.label] 새 글이 등록되었습니다",
+                "push_body": "${new.author_name}: ${new.title}",
+                "push_data": {
+                    "type": "board_post",
+                    "seq": "${new.seq}",
+                    "category": "category.name"
+                }
+            }
+        ],
+        "after_delete": [
+            {
+                "description": "답글 삭제 시 원글의 reply_count 감소 (root_seq 기준)",
+                "type": "update",
+                "entity": "board_post",
+                "condition": "${old.parent_seq} != null",
+                "match": {
+                    "seq": "${old.root_seq}"
+                },
+                "data": {
+                    "reply_count": "${target.reply_count} - 1"
+                }
+            }
+        ],
+        "after_list_each": [
+            {
+                "description": "리스트 조회 시 각 게시글의 첨부파일을 함께 반환 (카드용)",
+                "type": "entity",
+                "entity": "file_meta",
+                "action": "list",
+                "fields": ["uuid", "original_name", "mime_type", "size"],
+                "conditions": {
+                    "entity_name": "board_post",
+                    "entity_seq": "${new.seq}",
+                    "or": [
+                        {
+                            "status": "active"
+                        },
+                        {
+                            "status": "pending"
+                        }
+                    ]
+                },
+                "assign_to": "files"
+            }
+        ],
+        "after_get": [
+            {
+                "description": "게시글 상세 조회 시 카테고리 설정을 함께 반환",
+                "type": "entity",
+                "entity": "board_category",
+                "action": "find",
+                "conditions": {
+                    "name": "${new.category_name}"
+                },
+                "assign_to": "category"
+            },
+            {
+                "description": "게시글 상세 조회 시 태그 이름 목록을 함께 반환",
+                "type": "sql",
+                "query": "SELECT bt.name FROM board_post_tag bpt JOIN board_tag bt ON bt.seq = bpt.tag_seq WHERE bpt.post_seq = ? ORDER BY bt.name ASC",
+                "params": ["${new.seq}"],
+                "assign_to": "tags"
+            },
+            {
+                "description": "게시글 상세 조회 시 첨부파일 목록을 함께 반환",
+                "type": "entity",
+                "entity": "file_meta",
+                "action": "list",
+                "fields": ["*"],
+                "conditions": {
+                    "entity_name": "board_post",
+                    "entity_seq": "${new.seq}",
+                    "or": [
+                        {
+                            "status": "active"
+                        },
+                        {
+                            "status": "pending"
+                        }
+                    ]
+                },
+                "assign_to": "files"
+            },
+            {
+                "description": "게시글 상세 조회 시 댓글 목록을 함께 반환",
+                "type": "entity",
+                "entity": "board_comment",
+                "action": "list",
+                "conditions": {
+                    "post_seq": "${new.seq}",
+                    "status": "active"
+                },
+                "fields": ["*"],
+                "assign_to": "comments"
+            },
+            {
+                "description": "현재 사용자의 게시글 좋아요 여부 조회",
+                "type": "entity",
+                "entity": "board_like",
+                "action": "find",
+                "conditions": {
+                    "post_seq": "${new.seq}",
+                    "account_seq": "${account.seq}"
+                },
+                "assign_to": "my_like"
+            }
+        ]
+    }
+}

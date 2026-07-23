@@ -1,0 +1,57 @@
+{
+    "name": "ocr_usage",
+    "description": "OCR API 일별 사용량 집계. 쿼터 모니터링 및 비용 추적용.",
+    "compress": true,
+    "read_only": true,
+    "fields": {
+        "usage_date": {
+            "index": true,
+            "comment": "사용 날짜 (YYYY-MM-DD)",
+            "type": "varchar(10)",
+            "required": true
+        },
+        "provider": {
+            "index": true,
+            "comment": "OCR 드라이버 이름",
+            "type": "varchar(30)",
+            "required": true
+        },
+        "doc_type": {
+            "index": true,
+            "comment": "문서 유형",
+            "type": "varchar(30)",
+            "required": true
+        },
+        "request_count": {
+            "comment": "총 요청 수",
+            "type": "int",
+            "default": 0
+        },
+        "page_count": {
+            "comment": "총 처리 페이지 수",
+            "type": "int",
+            "default": 0
+        },
+        "success_count": {
+            "comment": "성공 요청 수",
+            "type": "int",
+            "default": 0
+        },
+        "fail_count": {
+            "comment": "실패 요청 수",
+            "type": "int",
+            "default": 0
+        },
+        "total_ms": {
+            "comment": "총 처리 시간 합계 (ms)",
+            "type": "bigint",
+            "default": 0
+        },
+        "avg_confidence": {
+            "nullable": true,
+            "comment": "평균 신뢰도",
+            "type": "decimal(5,4)"
+        }
+    },
+    "indexes": [["usage_date", "provider", "doc_type"]]
+}

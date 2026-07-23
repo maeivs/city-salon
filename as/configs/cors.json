@@ -1,0 +1,24 @@
+{
+    "enabled": true,
+    "allow_localhost": true,
+    "origins": ["http://118.217.181.36:48200"],
+    "credentials": true,
+    "allowed_headers": [
+        "Authorization",
+        "Content-Type",
+        "X-API-Key",
+        "X-Nonce",
+        "X-Packet-Token",
+        "X-Signature",
+        "X-Timestamp",
+        "x-request-id",
+        "x-csrf-token"
+    ],
+    "exposed_headers": [
+        "x-request-id",
+        "x-ratelimit-limit",
+        "x-ratelimit-remaining",
+        "x-ratelimit-reset"
+    ],
+    "max_age": 86400
+}

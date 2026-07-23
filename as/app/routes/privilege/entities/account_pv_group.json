@@ -1,0 +1,15 @@
+{
+    "name": "account_pv_group",
+    "index_table_only": true,
+    "fields": {
+        "account_seq": {
+            "index": true,
+            "comment": "계정seq"
+        },
+        "pv_group_seq": {
+            "index": true,
+            "comment": "권한그룹seq"
+        }
+    },
+    "unique": [["account_seq", "pv_group_seq"]]
+}

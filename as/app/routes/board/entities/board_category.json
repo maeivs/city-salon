@@ -1,0 +1,194 @@
+{
+    "name": "board_category",
+    "description": "게시판 카테고리 (게시판 종류 정의)",
+    "index_table_only": true,
+    "fields": {
+        "name": {
+            "required": true,
+            "unique": true,
+            "comment": "게시판 이름 (예: notice, free, qna)"
+        },
+        "label": {
+            "required": true,
+            "comment": "표시 이름 (예: 공지사항, 자유게시판)"
+        },
+        "description": {
+            "comment": "게시판 설명"
+        },
+        "status": {
+            "index": true,
+            "type": ["active", "inactive"],
+            "default": "active",
+            "comment": "게시판 활성 상태"
+        },
+        "sort_order": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "정렬 순서"
+        },
+        "read_role": {
+            "type": ["all", "member", "admin"],
+            "default": "all",
+            "comment": "읽기 권한"
+        },
+        "write_role": {
+            "type": ["all", "member", "admin"],
+            "default": "member",
+            "comment": "쓰기 권한"
+        },
+        "reply_enabled": {
+            "type": "bool",
+            "default": true,
+            "comment": "답글 허용 여부"
+        },
+        "comment_enabled": {
+            "type": "bool",
+            "default": true,
+            "comment": "댓글 허용 여부"
+        },
+        "file_enabled": {
+            "type": "bool",
+            "default": true,
+            "comment": "파일 첨부 허용 여부"
+        },
+        "guest_write_enabled": {
+            "type": "bool",
+            "default": false,
+            "comment": "비회원 글작성 허용 여부 (비밀번호 인증)"
+        },
+        "like_enabled": {
+            "type": "bool",
+            "default": true,
+            "comment": "좋아요/추천 허용 여부"
+        },
+        "rating_enabled": {
+            "type": "bool",
+            "default": false,
+            "comment": "별점 허용 여부"
+        },
+        "accept_enabled": {
+            "type": "bool",
+            "default": false,
+            "comment": "답변 채택 허용 여부 (Q&A 게시판용)"
+        },
+        "push_on_write": {
+            "type": "bool",
+            "default": false,
+            "comment": "글 등록 시 관리자 push 알림 여부 (문의게시판 등)"
+        },
+        "view_count_mode": {
+            "type": ["always", "session", "daily", "once"],
+            "default": "daily",
+            "comment": "조회수 카운트 방식. always=매 조회, session=세션당 1회, daily=1일 1인 1회(기본), once=1인 1회(영구)"
+        },
+        "anonymous_enabled": {
+            "type": "bool",
+            "default": false,
+            "comment": "익명 게시판 여부. Y이면 작성자 표시를 '익명'으로 강제, account_seq는 응답에서 숨김"
+        },
+        "post_type_options": {
+            "type": "json",
+            "comment": "게시글 작성 시 선택 가능한 분류 문자열 목록"
+        }
+    },
+    "reset_defaults": [
+        {
+            "name": "notice",
+            "label": "공지사항",
+            "description": "서비스 공지와 운영 안내를 등록하는 게시판",
+            "sort_order": 10,
+            "read_role": "all",
+            "write_role": "admin",
+            "reply_enabled": false,
+            "comment_enabled": true,
+            "file_enabled": true,
+            "guest_write_enabled": false,
+            "like_enabled": true,
+            "rating_enabled": false,
+            "accept_enabled": false,
+            "push_on_write": false,
+            "view_count_mode": "daily",
+            "anonymous_enabled": false,
+            "post_type_options": ["일반", "운영", "긴급"],
+            "status": "active"
+        },
+        {
+            "name": "archive",
+            "label": "자료실",
+            "description": "문서와 첨부파일을 공유하는 자료실 게시판",
+            "sort_order": 20,
+            "read_role": "member",
+            "write_role": "member",
+            "reply_enabled": false,
+            "comment_enabled": true,
+            "file_enabled": true,
+            "guest_write_enabled": false,
+            "like_enabled": true,
+            "rating_enabled": false,
+            "accept_enabled": false,
+            "push_on_write": false,
+            "view_count_mode": "daily",
+            "anonymous_enabled": false,
+            "status": "active"
+        },
+        {
+            "name": "free",
+            "label": "자유게시판",
+            "description": "일반 회원이 자유롭게 글을 남기는 게시판",
+            "sort_order": 30,
+            "read_role": "member",
+            "write_role": "member",
+            "reply_enabled": true,
+            "comment_enabled": true,
+            "file_enabled": true,
+            "guest_write_enabled": false,
+            "like_enabled": true,
+            "rating_enabled": false,
+            "accept_enabled": false,
+            "push_on_write": false,
+            "view_count_mode": "daily",
+            "anonymous_enabled": false,
+            "status": "active"
+        },
+        {
+            "name": "qna",
+            "label": "문의게시판",
+            "description": "문의와 답변을 등록하는 게시판",
+            "sort_order": 40,
+            "read_role": "member",
+            "write_role": "member",
+            "reply_enabled": true,
+            "comment_enabled": true,
+            "file_enabled": true,
+            "guest_write_enabled": false,
+            "like_enabled": false,
+            "rating_enabled": false,
+            "accept_enabled": true,
+            "push_on_write": true,
+            "view_count_mode": "daily",
+            "anonymous_enabled": false,
+            "post_type_options": ["문의", "건의사항", "오류제보"],
+            "status": "active"
+        },
+        {
+            "name": "faq",
+            "label": "자주 묻는 질문",
+            "description": "반복 문의를 정리하는 안내 게시판",
+            "sort_order": 50,
+            "read_role": "all",
+            "write_role": "admin",
+            "reply_enabled": false,
+            "comment_enabled": true,
+            "file_enabled": true,
+            "guest_write_enabled": false,
+            "like_enabled": true,
+            "rating_enabled": false,
+            "accept_enabled": false,
+            "push_on_write": false,
+            "view_count_mode": "daily",
+            "anonymous_enabled": false,
+            "status": "active"
+        }
+    ]
+}

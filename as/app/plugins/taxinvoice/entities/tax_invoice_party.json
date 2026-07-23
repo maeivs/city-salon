@@ -1,0 +1,61 @@
+{
+    "name": "tax_invoice_party",
+    "description": "세금계산서 거래처 마스터. 공급자·공급받는자·수탁자로 재사용된다.",
+    "fields": {
+        "corp_num": {
+            "index": true,
+            "hash": true,
+            "comment": "사업자번호 (하이픈 제외, 개인사업자 포함)",
+            "required": true
+        },
+        "corp_name": {
+            "index": true,
+            "comment": "회사명",
+            "required": true
+        },
+        "tax_reg_id": {
+            "index": true,
+            "comment": "종사업장 식별번호 (없으면 0000)",
+            "default": "0000"
+        },
+        "ceo_name": {
+            "type": "string",
+            "comment": "대표자명",
+            "nullable": true
+        },
+        "addr": {
+            "type": "string",
+            "comment": "주소",
+            "nullable": true
+        },
+        "biz_type": {
+            "type": "string",
+            "comment": "업태",
+            "nullable": true
+        },
+        "biz_class": {
+            "type": "string",
+            "comment": "업종",
+            "nullable": true
+        },
+        "contact_name": {
+            "type": "string",
+            "comment": "담당자명",
+            "nullable": true
+        },
+        "tel": {
+            "type": "phone",
+            "nullable": true
+        },
+        "hp": {
+            "type": "phone",
+            "comment": "문자수신 휴대폰",
+            "nullable": true
+        },
+        "email": {
+            "type": "email",
+            "nullable": true
+        }
+    },
+    "unique": [["corp_num", "tax_reg_id"]]
+}

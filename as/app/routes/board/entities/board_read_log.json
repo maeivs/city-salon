@@ -1,0 +1,27 @@
+{
+    "name": "board_read_log",
+    "description": "게시글 읽음 기록",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "post_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "board_post seq"
+        },
+        "account_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "읽은 회원 seq"
+        },
+        "read_time": {
+            "type": "datetime",
+            "comment": "가장 최근에 읽은 시각 (upsert 시 갱신)"
+        }
+    },
+    "unique": ["post_seq", "account_seq"],
+    "fk": {
+        "post_seq": "board_post.seq"
+    }
+}

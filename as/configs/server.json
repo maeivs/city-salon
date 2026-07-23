@@ -1,0 +1,30 @@
+{
+    "namespace": "entity-app-server",
+    "host": "0.0.0.0",
+    "port": 48200,
+    "logging": {
+        "level": "info",
+        "logDir": "./logs",
+        "access": {
+            "enabled": true,
+            "filename": "access",
+            "frequency": "daily",
+            "maxFiles": 14,
+            "maxSize": "100m"
+        },
+        "error": {
+            "enabled": true,
+            "filename": "error",
+            "frequency": "daily",
+            "maxFiles": 30,
+            "maxSize": "50m"
+        },
+        "app": {
+            "enabled": true,
+            "filename": "app",
+            "frequency": "daily",
+            "maxFiles": 14,
+            "maxSize": "100m"
+        }
+    }
+}

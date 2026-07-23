@@ -1,0 +1,26 @@
+{
+    "name": "account_biometric",
+    "description": "계정별 생체인증 수단 등록 정보",
+    "fields": {
+        "account_seq": {
+            "index": true,
+            "comment": "계정 seq"
+        },
+        "bio_id": {
+            "index": true,
+            "unique": true,
+            "comment": "생체인증 식별자"
+        },
+        "device_id": {
+            "index": true,
+            "comment": "기기 식별자"
+        },
+        "public_key": {
+            "comment": "등록된 공개키"
+        },
+        "label": {
+            "comment": "사용자 표시용 이름"
+        }
+    },
+    "unique": [["account_seq", "device_id"]]
+}

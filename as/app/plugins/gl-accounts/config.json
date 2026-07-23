@@ -1,0 +1,6 @@
+{
+    "_comment": "표준 계정과목 플러그인 설정 예시. 이 파일을 config.json 으로 복사해 사용하세요. 정적 참조 데이터라 추가 설정은 없습니다.",
+    "enabled": true,
+    "deploy": true,
+    "minify": false
+}

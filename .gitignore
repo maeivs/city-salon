@@ -1,0 +1,67 @@
+# 환경변수 (서버/포트/시크릿 — 커밋 금지)
+.env
+.env.local
+*.local
+
+# Secrets — 인증서/개인키/서비스 계정 키 등 (절대 커밋 금지)
+.secrets/
+secrets/
+*.pem
+*.key
+*.pfx
+*.p12
+as/configs/keys/
+es/configs/keys/
+
+# 의존성
+node_modules
+
+# 로그
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# postinstall 생성 자산 — npm install 때 scripts/setup-mediapipe.mjs / setup-pdfjs.mjs 가 자동으로 채운다.
+# vite publicDir=static 이라 빌드 산출물에는 자동 포함된다.
+www/static/mediapipe/
+www/static/pdfjs/
+
+# 빌드 산출물 — 프로덕션 배포본(public/)과 임시 빌드 디렉터리(.build-*: production/test/analyze)
+www/public/
+.build-public
+.build-public-backup
+.build-*
+dist
+dist-ssr
+
+# ES/AS 런타임 산출물 (as/, es/ 추가 시 대비)
+es/.cache/
+es/.run/
+es/bin/
+es/logs/
+es/uploads/
+*.pid
+
+# 임시/캐시
+tmp
+.cache
+.bak/
+backup
+uploads
+*.tgz
+*.tar.gz
+*.lock
+
+# 에디터
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

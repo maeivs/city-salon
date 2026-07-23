@@ -1,0 +1,103 @@
+{
+    "enabled": false,
+    "default_provider": "naver",
+    "providers": {
+        "google": {
+            "driver": "google",
+            "api_key": "${OCR_GOOGLE_API_KEY}",
+            "endpoint": "https://vision.googleapis.com/v1/images:annotate",
+            "supported_formats": [
+                "image/jpeg",
+                "image/png",
+                "image/gif",
+                "image/webp",
+                "image/bmp",
+                "application/pdf"
+            ],
+            "max_file_size": 20971520,
+            "timeout": 30000
+        },
+        "naver": {
+            "driver": "naver",
+            "api_key": "${OCR_NAVER_SECRET}",
+            "endpoint": "${OCR_NAVER_INVOKE_URL}",
+            "supported_formats": [
+                "image/jpeg",
+                "image/png",
+                "image/gif",
+                "image/bmp",
+                "image/tiff",
+                "application/pdf"
+            ],
+            "max_file_size": 20971520,
+            "timeout": 30000
+        },
+        "aws_textract": {
+            "driver": "aws_textract",
+            "api_key": "${OCR_AWS_ACCESS_KEY}",
+            "api_secret": "${OCR_AWS_SECRET_KEY}",
+            "region": "${OCR_AWS_REGION}",
+            "supported_formats": ["image/jpeg", "image/png", "application/pdf"],
+            "max_file_size": 10485760,
+            "timeout": 30000
+        },
+        "azure": {
+            "driver": "azure",
+            "api_key": "${OCR_AZURE_KEY}",
+            "endpoint": "${OCR_AZURE_ENDPOINT}",
+            "supported_formats": [
+                "image/jpeg",
+                "image/png",
+                "image/bmp",
+                "image/tiff",
+                "application/pdf"
+            ],
+            "max_file_size": 52428800,
+            "timeout": 60000
+        },
+        "upstage": {
+            "driver": "upstage",
+            "api_key": "${OCR_UPSTAGE_API_KEY}",
+            "endpoint": "https://api.upstage.ai/v1/document-ai/ocr",
+            "supported_formats": ["image/jpeg", "image/png", "application/pdf"],
+            "max_file_size": 20971520,
+            "timeout": 30000
+        },
+        "tesseract": {
+            "driver": "tesseract",
+            "supported_formats": [
+                "image/jpeg",
+                "image/png",
+                "image/gif",
+                "image/bmp",
+                "image/tiff"
+            ],
+            "max_file_size": 52428800,
+            "timeout": 60000
+        }
+    },
+    "cache": {
+        "enabled": true,
+        "ttl": 3600
+    },
+    "quota": {
+        "daily_limit": 1000,
+        "monthly_limit": 20000,
+        "warn_percent": 80
+    },
+    "dispatch": {
+        "max_queue_size": 100,
+        "concurrency": 3,
+        "tick_interval": 200
+    },
+    "parsing": {
+        "confidence_threshold": 0.6,
+        "llm_fallback": true,
+        "llm_confidence_threshold": 0.85,
+        "template_dir": "configs/ocr-templates"
+    },
+    "retry": {
+        "max_retries": 2,
+        "retry_delay": 1000
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "gl_account_items",
+    "description": "거래항목별 계정과목 매핑 (가나다순). klkorea.net 거래항목별 계정과목표 기준 기본값으로 자동 적재됩니다.",
+    "license_scope": false,
+    "hard_delete": true,
+    "history": false,
+    "index_table_only": true,
+    "index_updated_time": false,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "tran_item": {
+            "index": true,
+            "search": true,
+            "required": true,
+            "comment": "거래항목명 (예: 가계수표, 가로등). n-gram 검색 지원"
+        },
+        "account_name": {
+            "index": true,
+            "search": true,
+            "required": true,
+            "comment": "매핑되는 계정과목명 (예: 현금). n-gram 검색 지원"
+        },
+        "account_code": {
+            "type": "uint",
+            "index": true,
+            "comment": "매핑되는 계정과목 코드 (gl_accounts.code 참조)"
+        }
+    }
+}

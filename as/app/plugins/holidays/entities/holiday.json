@@ -1,0 +1,25 @@
+{
+    "name": "holiday",
+    "description": "공휴일·국경일·24절기·잡절 정보. data.go.kr SpcdeInfoService API로 자동 동기화됩니다.",
+    "license_scope": false,
+    "hard_delete": true,
+    "history": false,
+    "index_updated_time": false,
+    "index_table_only": true,
+    "fields": {
+        "locdate": {
+            "unique": true,
+            "comment": "날짜 YYYYMMDD 숫자 (예: 20260101)"
+        },
+        "date_name": {
+            "comment": "특일 이름 (예: 신정, 설날, 하지)"
+        },
+        "date_kind": {
+            "comment": "날짜 분류 코드 (01=공휴일, 02=기념일, 03=24절기, 04=잡절 등)"
+        },
+        "is_holiday": {
+            "type": "boolean",
+            "comment": "공휴일 여부 0/1 (API의 Y/N 값을 boolean으로 정규화해 저장)"
+        }
+    }    
+}

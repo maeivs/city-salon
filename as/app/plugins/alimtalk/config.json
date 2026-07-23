@@ -1,0 +1,52 @@
+{
+    "_comment": "알림톡 설정 — enabled: false로 비활성화 상태",
+    "enabled": false,
+    "default": "aligo",
+    "sender_key": "${ALIMTALK_SENDER_KEY}",
+    "workers": 2,
+    "dispatch_interval_sec": 5,
+    "queue_size": 200,
+    "max_retries": 3,
+    "_template_file": "templates/notification/alimtalk.json",
+    "providers": {
+        "aligo": {
+            "driver": "aligo",
+            "_comment": "알리고",
+            "api_key": "${ALIGO_API_KEY}",
+            "api_secret": "",
+            "user_id": "${ALIGO_USER_ID}",
+            "account": "",
+            "sender_key": "${ALIMTALK_SENDER_KEY}",
+            "pf_id": "",
+            "app_key": "",
+            "secret_key": ""
+        },
+        "solapi": {
+            "driver": "solapi",
+            "_comment": "솔라피 (Solapi)",
+            "api_key": "${SOLAPI_API_KEY}",
+            "api_secret": "${SOLAPI_API_SECRET}",
+            "sender_key": "${ALIMTALK_SENDER_KEY}",
+            "pf_id": "${SOLAPI_PF_ID}",
+            "api_url": "https://api.solapi.com"
+        },
+        "bizgo": {
+            "driver": "bizgo",
+            "_comment": "비즈고 (BizGo)",
+            "biz_id": "${BIZGO_BIZ_ID}",
+            "api_key": "${BIZGO_API_KEY}",
+            "api_secret": "${BIZGO_API_SECRET}",
+            "sender_key": "${ALIMTALK_SENDER_KEY}",
+            "api_url": "https://bizgo.kakao.com"
+        },
+        "nhncloud": {
+            "driver": "nhncloud",
+            "_comment": "NHN Cloud Alimtalk",
+            "app_key": "${NHNCLOUD_APP_KEY}",
+            "secret_key": "${NHNCLOUD_SECRET_KEY}",
+            "sender_key": "${ALIMTALK_SENDER_KEY}",
+            "plus_friend_id": "${KAKAO_PLUS_FRIEND_ID}",
+            "api_url": "https://api-alimtalk.cloud.toast.com"
+        }
+    }
+}

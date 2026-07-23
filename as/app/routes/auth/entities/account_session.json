@@ -1,0 +1,40 @@
+{
+    "name": "account_session",
+    "comment": "활성 로그인 세션 상태",
+    "history": false,
+    "index_table_only": true,
+    "index_updated_time": false,
+    "fields": {
+        "account_seq": {
+            "comment": "계정 시퀀스"
+        },
+        "license_seq": {
+            "comment": "라이선스 시퀀스"
+        },
+        "session_id": {
+            "comment": "세션 식별자",
+            "unique": true,
+            "type": "string"
+        },
+        "is_active": {
+            "type": "bool",
+            "comment": "활성 여부"
+        },
+        "revoke_reason": {
+            "comment": "종료 사유"
+        },
+        "revoked_time": {
+            "comment": "종료 시각"
+        },
+        "ip_address": {
+            "comment": "접속 IP"
+        },
+        "user_agent": {
+            "comment": "브라우저 정보"
+        },
+        "device_id": {
+            "comment": "디바이스 식별자",
+            "type": "string"
+        }
+    }
+}

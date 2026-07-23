@@ -1,0 +1,13 @@
+{
+    "enabled": true,
+    "cookie_name": "_csrf",
+    "header_name": "x-csrf-token",
+    "cookie_options": {
+        "http_only": false,
+        "same_site": "lax",
+        "secure": false,
+        "path": "/",
+        "max_age": 86400
+    },
+    "skip_paths": ["/v1/health", "/v1/alimtalk/webhook"]
+}

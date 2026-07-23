@@ -1,0 +1,229 @@
+{
+    "name": "tax_invoice",
+    "description": "전자세금계산서 마스터. 공급자·공급받는자·품목 정보를 포함한다.",
+    "fields": {
+        "mgt_key": {
+            "index": true,
+            "comment": "내부 관리번호 (우리 시스템에서 생성·관리)",
+            "required": true,
+            "unique": true
+        },
+        "write_date": {
+            "index": true,
+            "comment": "작성일자 (YYYYMMDD)",
+            "required": true
+        },
+        "provider": {
+            "index": true,
+            "comment": "연동 프로바이더 드라이버",
+            "type": ["barobill", "popbill", "bolta", "smartbill", "esero"],
+            "required": true
+        },
+        "invoicer_seq": {
+            "index": true,
+            "comment": "공급자 tax_invoice_party.seq FK",
+            "required": true
+        },
+        "invoicee_seq": {
+            "index": true,
+            "comment": "공급받는자 tax_invoice_party.seq FK",
+            "required": true
+        },
+        "broker_seq": {
+            "index": true,
+            "comment": "수탁자 tax_invoice_party.seq FK (위수탁발급 시에만 사용)",
+            "nullable": true
+        },
+        "issue_direction": {
+            "index": true,
+            "comment": "발급방향",
+            "type": ["forward", "reverse", "trustee"],
+            "default": "forward"
+        },
+        "tax_type": {
+            "index": true,
+            "comment": "과세형태",
+            "type": ["taxation", "zero", "exempt"],
+            "default": "taxation"
+        },
+        "state": {
+            "index": true,
+            "comment": "공통 추상 상태 (드라이버 내부에서 정규화)",
+            "type": [
+                "draft",
+                "pre_issue_waiting",
+                "pre_issue_accepted",
+                "reverse_waiting",
+                "issued",
+                "issue_cancelled",
+                "refused",
+                "cancelled"
+            ],
+            "default": "draft"
+        },
+        "nts_state": {
+            "index": true,
+            "comment": "국세청 전송 상태 (드라이버 내부에서 정규화)",
+            "type": ["pending", "waiting", "sending", "completed", "failed"],
+            "default": "pending"
+        },
+        "ref_table": {
+            "index": true,
+            "comment": "연결된 데이터 테이블명 (CRM 매출오더, ERP 세금계산 등 연결 시 사용)",
+            "nullable": true
+        },
+        "ref_seq": {
+            "index": true,
+            "comment": "연결된 데이터의 seq (ref_table + ref_seq 조합으로 복합인덱스)",
+            "nullable": true
+        },
+        "nts_confirm_num": {
+            "index": true,
+            "comment": "국세청 승인번호 (수정세금계산서 원본 조회, 국세청 대조에 사용)",
+            "nullable": true
+        },
+        "provider_doc_key": {
+            "comment": "프로바이더가 부여한 문서 키 (예: barobill MgtKey, bolta issuanceKey)",
+            "type": "string",
+            "nullable": true
+        },
+        "doc_key_type": {
+            "comment": "문서 키 분류 (팝빌: SELL/BUY/TRUSTEE, 기타 드라이버는 사용 안 함)",
+            "type": "string",
+            "nullable": true
+        },
+        "tax_invoice_type": {
+            "comment": "세금계산서 유형 1:세금계산서 2:계산서 4:위수탁세금계산서 5:위수탁계산서",
+            "type": "tinyint",
+            "default": 1
+        },
+        "purpose_type": {
+            "comment": "영수/청구 구분 1:영수 2:청구",
+            "type": "tinyint",
+            "default": 1
+        },
+        "modify_code": {
+            "comment": "수정사유코드 1~6 (수정세금계산서에만 사용)",
+            "type": "tinyint",
+            "nullable": true
+        },
+        "original_nts_key": {
+            "comment": "당초 세금계산서 국세청 승인번호 (수정세금계산서)",
+            "type": "string",
+            "nullable": true
+        },
+        "amount_total": {
+            "comment": "공급가액",
+            "type": "int",
+            "default": 0
+        },
+        "tax_total": {
+            "comment": "세액",
+            "type": "int",
+            "default": 0
+        },
+        "total_amount": {
+            "comment": "합계금액",
+            "type": "int",
+            "default": 0
+        },
+        "cash": {
+            "type": "int",
+            "nullable": true,
+            "comment": "현금"
+        },
+        "chk_bill": {
+            "type": "int",
+            "nullable": true,
+            "comment": "수표"
+        },
+        "note": {
+            "type": "int",
+            "nullable": true,
+            "comment": "어음"
+        },
+        "credit": {
+            "type": "int",
+            "nullable": true,
+            "comment": "외상미수금"
+        },
+        "remark1": {
+            "type": "string",
+            "nullable": true
+        },
+        "remark2": {
+            "type": "string",
+            "nullable": true
+        },
+        "remark3": {
+            "type": "string",
+            "nullable": true
+        },
+        "kwon": {
+            "type": "string",
+            "comment": "권 (필요 시)",
+            "nullable": true
+        },
+        "ho": {
+            "type": "string",
+            "comment": "호 (필요 시)",
+            "nullable": true
+        },
+        "serial_num": {
+            "type": "string",
+            "comment": "일련번호",
+            "nullable": true
+        },
+        "is_opened": {
+            "type": "bool",
+            "comment": "수신자 이메일 개봉여부",
+            "default": false
+        },
+        "is_confirmed": {
+            "type": "bool",
+            "comment": "수신자 확인여부",
+            "default": false
+        },
+        "issue_time": {
+            "type": "timestamp",
+            "nullable": true,
+            "comment": "발급일시"
+        },
+        "nts_send_time": {
+            "type": "timestamp",
+            "nullable": true,
+            "comment": "국세청 전송일시"
+        },
+        "nts_result_time": {
+            "type": "timestamp",
+            "nullable": true,
+            "comment": "국세청 전송결과 수신일시"
+        },
+        "invoicer": {
+            "comment": "공급자 정보 스냅샷 JSON — 발급 시점 데이터 보존 (법적 원본). tax_invoice_party 변경에 영향받지 않음",
+            "type": "json",
+            "nullable": false
+        },
+        "invoicee": {
+            "comment": "공급받는자 정보 스냅샷 JSON (invoicer 와 동일 구조)",
+            "type": "json",
+            "nullable": false
+        },
+        "broker": {
+            "comment": "수탁자 정보 스냅샷 JSON (위수탁발급 시에만 사용)",
+            "type": "json",
+            "nullable": true
+        },
+        "provider_raw": {
+            "comment": "프로바이더 원본 응답 전체 (추상 필드 외 프로바이더 고유 데이터 포함)",
+            "type": "json",
+            "nullable": true
+        }
+    },
+    "fk": {
+        "invoicer_seq": "tax_invoice_party.seq",
+        "invoicee_seq": "tax_invoice_party.seq",
+        "broker_seq": "tax_invoice_party.seq",
+        "ref_seq": false
+    }
+}

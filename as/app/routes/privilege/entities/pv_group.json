@@ -1,0 +1,31 @@
+{
+    "name": "pv_group",
+    "description": "권한그룹.",
+    "index_table_only": true,
+    "license_scope": false,
+    "hard_delete": true,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "name": {
+            "comment": "그룹명",
+            "unique": true
+        },
+        "description": {
+            "comment": "설명"
+        }
+    },
+    "reset_defaults": [
+        {
+            "name": "관리자",
+            "description": "전체 관리 권한"
+        },
+        {
+            "name": "인사담당자",
+            "description": "인사 관리 권한"
+        },
+        {
+            "name": "일반사용자",
+            "description": "기본 사용자 권한"
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+{
+    "name": "llm_chatbot",
+    "description": "챗봇 정의. 페르소나·프로바이더·RAG 설정을 저장한다. 실제 대화는 llm_conversation에 chatbot_seq로 연결.",
+    "fields": {
+        "name": {
+            "index": true,
+            "comment": "챗봇 식별 이름 (URL에서 사용, 영문+숫자+하이픈)",
+            "type": "varchar(100)",
+            "required": true
+        },
+        "label": {
+            "comment": "사용자에게 표시할 이름",
+            "type": "varchar(200)",
+            "required": true
+        },
+        "system_msg": {
+            "type": "text",
+            "comment": "챗봇 페르소나 시스템 프롬프트 (RAG 컨텍스트가 이 뒤에 자동 삽입됨)",
+            "nullable": true
+        },
+        "welcome_message": {
+            "type": "text",
+            "comment": "대화 시작 시 첫 번째로 표시할 안내 메시지",
+            "nullable": true
+        },
+        "provider_name": {
+            "index": true,
+            "comment": "사용할 LLM 프로바이더 이름. 비어있으면 config.json default 사용",
+            "type": "varchar(50)",
+            "nullable": true
+        },
+        "rag_enabled": {
+            "index": true,
+            "comment": "RAG 기반 문서 검색 활성화 여부",
+            "type": "bool",
+            "default": false
+        },
+        "rag_tenant_id": {
+            "index": true,
+            "comment": "RAG 문서 격리용 테넌트 ID. 비어있으면 전체 문서 대상",
+            "type": "varchar(100)",
+            "nullable": true
+        },
+        "rag_top_k": {
+            "comment": "RAG 검색 시 가져올 문서 청크 수",
+            "type": "int",
+            "default": 5
+        },
+        "rag_min_score": {
+            "comment": "RAG 유사도 임계값 (0~1). 미만이면 미사용",
+            "type": "float",
+            "default": 0.7
+        },
+        "rag_metadata": {
+            "type": "json",
+            "comment": "RAG 검색 필터 메타데이터 ({category: '...', tags: '...'} 형식)",
+            "nullable": true
+        },
+        "status": {
+            "index": true,
+            "comment": "챗봇 상태",
+            "type": ["active", "inactive"],
+            "default": "active"
+        }
+    }
+}

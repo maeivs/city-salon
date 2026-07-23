@@ -1,0 +1,67 @@
+{
+    "name": "llm_document",
+    "description": "RAG 지식베이스 문서 청크. 임베딩 벡터와 함께 저장.",
+    "compress": true,
+    "fields": {
+        "document_id": {
+            "index": true,
+            "comment": "문서 고유 식별자 (UUID 또는 파일명)",
+            "type": "varchar(200)",
+            "required": true
+        },
+        "chunk_index": {
+            "index": true,
+            "comment": "문서 내 청크 순서 (0부터)",
+            "type": "int",
+            "required": true
+        },
+        "title": {
+            "index": true,
+            "comment": "문서 제목",
+            "type": "varchar(200)",
+            "required": true
+        },
+        "content": {
+            "type": "text",
+            "comment": "청크 텍스트 내용",
+            "required": true
+        },
+        "content_type": {
+            "index": true,
+            "comment": "원문 MIME 타입 (text/plain, text/markdown 등)",
+            "type": "varchar(50)"
+        },
+        "vector": {
+            "type": "json",
+            "comment": "임베딩 벡터 ([]float32, JSON 배열)"
+        },
+        "vector_dim": {
+            "type": "int",
+            "comment": "벡터 디멘전 (1536, 768 등)"
+        },
+        "metadata": {
+            "type": "json",
+            "comment": "사용자 정의 메타데이터 ({category, tags, ...})"
+        },
+        "provider_name": {
+            "index": true,
+            "comment": "임베딩 생성 프로바이더 (dot product 일관성 보장)",
+            "type": "varchar(50)",
+            "required": true
+        },
+        "tenant_id": {
+            "index": true,
+            "comment": "테넌트 ID (데이터 격리)"
+        },
+        "token_count": {
+            "type": "int",
+            "comment": "청크 토큰 수 (참고용)"
+        },
+        "status": {
+            "index": true,
+            "type": ["active", "deleted"],
+            "default": "active",
+            "comment": "청크 상태"
+        }
+    }
+}

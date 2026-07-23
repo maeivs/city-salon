@@ -1,0 +1,86 @@
+{
+    "name": "board_comment",
+    "description": "게시글/답글 댓글 (단일 depth)",
+    "fields": {
+        "post_seq": {
+            "index": true,
+            "required": true,
+            "type": "uint",
+            "comment": "댓글 대상 board_post seq (원글 또는 답글)"
+        },
+        "root_seq": {
+            "index": true,
+            "required": true,
+            "type": "uint",
+            "comment": "최상위 원글 seq (해당 원글의 전체 댓글 조회용)"
+        },
+        "account_seq": {
+            "index": true,
+            "required": true,
+            "type": "uint",
+            "comment": "작성자 account seq"
+        },
+        "author_name": {
+            "required": true,
+            "comment": "작성자 표시 이름"
+        },
+        "content": {
+            "required": true,
+            "comment": "댓글 내용"
+        },
+        "status": {
+            "index": true,
+            "type": ["active", "deleted"],
+            "default": "active",
+            "comment": "댓글 상태"
+        },
+        "rating_sum": {
+            "type": "uint",
+            "default": "0",
+            "comment": "별점 합계 (캐시)"
+        },
+        "rating_count": {
+            "type": "uint",
+            "default": "0",
+            "comment": "별점 참여 수 (캐시)"
+        },
+        "like_count": {
+            "index": true,
+            "type": "uint",
+            "default": "0",
+            "comment": "좋아요 수 (캐시)"
+        }
+    },
+    "fk": {
+        "post_seq": "board_post.seq",
+        "root_seq": "board_post.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "description": "댓글 작성 시 대상 board_post.comment_count 증가",
+                "type": "update",
+                "entity": "board_post",
+                "match": {
+                    "seq": "${new.post_seq}"
+                },
+                "data": {
+                    "comment_count": "${target.comment_count} + 1"
+                }
+            }
+        ],
+        "after_delete": [
+            {
+                "description": "댓글 삭제 시 대상 board_post.comment_count 감소",
+                "type": "update",
+                "entity": "board_post",
+                "match": {
+                    "seq": "${old.post_seq}"
+                },
+                "data": {
+                    "comment_count": "${target.comment_count} - 1"
+                }
+            }
+        ]
+    }
+}

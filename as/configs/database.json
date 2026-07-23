@@ -1,0 +1,30 @@
+{
+    "default": "development",
+    "tableReadOnly": ["entity_*"],
+    "groups": {
+        "development": {
+            "driver": "mysql",
+            "host": "${DB_HOST_DEVELOPMENT}",
+            "port": "${DB_PORT_DEVELOPMENT}",
+            "database": "${DB_NAME_DEVELOPMENT}",
+            "user": "${DB_USER_DEVELOPMENT}",
+            "password": "${DB_PASSWORD_DEVELOPMENT}",
+            "maxConnections": 10,
+            "idleTimeout": 60000,
+            "connectionTimeout": 10000,
+            "readOnly": false
+        },
+        "production": {
+            "driver": "mysql",
+            "host": "${DB_HOST_PRODUCTION}",
+            "port": "${DB_PORT_PRODUCTION}",
+            "database": "${DB_NAME_PRODUCTION}",
+            "user": "${DB_USER_PRODUCTION}",
+            "password": "${DB_PASSWORD_PRODUCTION}",
+            "maxConnections": 10,
+            "idleTimeout": 60000,
+            "connectionTimeout": 10000,
+            "readOnly": false
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "name": "tax_invoice_item",
+    "description": "전자세금계산서 품목. tax_invoice 1건당 최대 99개.",
+    "fields": {
+        "tax_invoice_seq": {
+            "index": true,
+            "comment": "tax_invoice 엔티티 seq 참조",
+            "required": true
+        },
+        "item_seq": {
+            "type": "tinyint",
+            "comment": "품목 순번 (1~99, KFTC 전송 시 사용)",
+            "default": 1
+        },
+        "purchase_date": {
+            "type": "string",
+            "comment": "공급일자 (YYYYMMDD)",
+            "nullable": true
+        },
+        "name": {
+            "type": "string",
+            "comment": "품목명",
+            "nullable": true
+        },
+        "information": {
+            "type": "string",
+            "comment": "규격",
+            "nullable": true
+        },
+        "quantity": {
+            "type": "decimal",
+            "comment": "수량",
+            "nullable": true
+        },
+        "unit_price": {
+            "type": "decimal",
+            "comment": "단가",
+            "nullable": true
+        },
+        "amount": {
+            "type": "int",
+            "comment": "공급가액",
+            "default": 0
+        },
+        "tax": {
+            "type": "int",
+            "comment": "세액",
+            "default": 0
+        },
+        "description": {
+            "type": "string",
+            "comment": "비고",
+            "nullable": true
+        }
+    }
+}

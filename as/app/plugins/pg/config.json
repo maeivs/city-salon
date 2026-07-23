@@ -1,0 +1,79 @@
+{
+    "enabled": false,
+    "default": "toss_payments",
+    "webhook_secret": "",
+    "order_id_prefix": "ORD",
+    "success_url": "/payment/success",
+    "fail_url": "/payment/fail",
+    "webhook_url": "/v1/pg/webhook",
+    "amount_limit": {
+        "min": 100,
+        "max": 10000000
+    },
+    "workers": 2,
+    "providers": {
+        "toss_payments": {
+            "driver": "toss_payments",
+            "_comment": "토스페이먼츠 V2",
+            "client_key": "${TOSS_CLIENT_KEY}",
+            "secret_key": "${TOSS_SECRET_KEY}",
+            "api_url": "https://api.tosspayments.com",
+            "api_version": "2024-06-01"
+        },
+        "kakaopay": {
+            "driver": "kakaopay",
+            "_comment": "카카오페이",
+            "cid": "${KAKAO_PAY_CID}",
+            "admin_key": "${KAKAO_PAY_ADMIN_KEY}",
+            "api_url": "https://kapi.kakao.com"
+        },
+        "nice_payments": {
+            "driver": "nice_payments",
+            "_comment": "나이스페이먼츠 V2",
+            "client_key": "${NICE_CLIENT_KEY}",
+            "secret_key": "${NICE_SECRET_KEY}",
+            "api_url": "https://api.nicepay.co.kr",
+            "api_version": "v1"
+        },
+        "inicis": {
+            "driver": "inicis",
+            "_comment": "KG이니시스",
+            "mid": "${INICIS_MID}",
+            "sign_key": "${INICIS_SIGN_KEY}",
+            "iv": "${INICIS_IV}",
+            "api_url": "https://iniapi.inicis.com"
+        },
+        "naverpay": {
+            "driver": "naverpay",
+            "_comment": "네이버페이 주문형",
+            "partner_id": "${NAVER_PAY_PARTNER_ID}",
+            "client_id": "${NAVER_PAY_CLIENT_ID}",
+            "client_secret": "${NAVER_PAY_CLIENT_SECRET}",
+            "chain_id": "${NAVER_PAY_CHAIN_ID}",
+            "api_url": "https://pay.naver.com"
+        },
+        "payco": {
+            "driver": "payco",
+            "_comment": "PAYCO",
+            "partner_id": "${PAYCO_PARTNER_ID}",
+            "partner_secret": "${PAYCO_PARTNER_SECRET}",
+            "api_url": "https://apis.payco.com"
+        },
+        "payletter": {
+            "driver": "payletter",
+            "_comment": "페이레터 (Payletter) — Authorization: PLKEY {api_key}",
+            "client_id": "${PAYLETTER_CLIENT_ID}",
+            "api_key": "${PAYLETTER_API_KEY}",
+            "api_key_search": "${PAYLETTER_API_KEY_SEARCH}",
+            "api_url": "https://pgapi.payletter.com"
+        },
+        "paypal": {
+            "driver": "paypal",
+            "_comment": "PayPal REST API v2 — Sandbox: api-m.sandbox.paypal.com / Live: api-m.paypal.com",
+            "client_id": "${PAYPAL_CLIENT_ID}",
+            "secret_key": "${PAYPAL_CLIENT_SECRET}",
+            "api_url": "https://api-m.sandbox.paypal.com",
+            "webhook_secret": "${PAYPAL_WEBHOOK_ID}"
+        }
+    }
+}

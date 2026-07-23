@@ -1,0 +1,49 @@
+{
+    "name": "gl_accounts",
+    "description": "표준 계정과목 마스터 (재무상태표·손익계산서). klkorea.net 대차대조표/손익계산서 계정과목표 기준 기본값으로 자동 적재됩니다.",
+    "license_scope": false,
+    "hard_delete": true,
+    "history": false,
+    "index_table_only": true,
+    "index_updated_time": false,
+    "reset_defaults_quiet": true,
+    "fields": {
+        "code": {
+            "type": "uint",
+            "index": true,
+            "unique": true,
+            "required": true,
+            "comment": "계정과목 코드 (예: 10100)"
+        },
+        "account_name": {
+            "index": true,
+            "search": true,
+            "required": true,
+            "comment": "계정과목명 (예: 현금). n-gram 검색 지원"
+        },
+        "std_name": {
+            "index": true,
+            "search": true,
+            "comment": "기업회계기준 제출용 명칭 (예: 현금및현금등가물). n-gram 검색 지원"
+        },
+        "statement": {
+            "index": true,
+            "required": true,
+            "comment": "재무제표 구분: 재무상태표 / 손익계산서"
+        },
+        "sub_category": {
+            "index": true,
+            "required": true,
+            "comment": "재무제표 하위 구분: 자산/부채/자본/매출액/매출원가/판매비와관리비/영업외수익/영업외비용"
+        },
+        "classification": {
+            "index": true,
+            "comment": "회계 분류 (예: 당좌자산, 유동부채, 유형자산). 손익계산서 항목은 비어 있을 수 있음"
+        },
+        "account_level": {
+            "type": "uint",
+            "index": true,
+            "comment": "계층: 1=대분류(헤더), 2=세부 계정"
+        }
+    }
+}

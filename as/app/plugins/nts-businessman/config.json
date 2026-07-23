@@ -1,0 +1,7 @@
+{
+    "enabled": false,
+    "apiKey": "${DATAGOKR_API_KEY}",
+    "apiBaseUrl": "https://api.odcloud.kr/api/nts-businessman/v1",
+    "timeoutMs": 10000,
+    "returnType": "JSON"
+}

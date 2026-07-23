@@ -1,0 +1,52 @@
+{
+    "name": "tax_invoice_log",
+    "description": "전자세금계산서 처리 이력 (프로바이더 상태변화, 국세청 전송결과 등)",
+    "hard_delete": true,
+    "compress": true,
+    "index_updated_time": false,
+    "fields": {
+        "tax_invoice_seq": {
+            "index": true,
+            "comment": "tax_invoice 엔티티 seq 참조",
+            "required": true
+        },
+        "log_type": {
+            "index": true,
+            "comment": "이력 유형",
+            "type": [
+                "state_change",
+                "nts_send",
+                "nts_result",
+                "email_send",
+                "sms_send",
+                "cancel",
+                "refuse",
+                "error"
+            ],
+            "required": true
+        },
+        "log_time": {
+            "index": true,
+            "comment": "이력 발생 일시",
+            "required": true
+        },
+        "mgt_key": {
+            "type": "string",
+            "comment": "관리번호"
+        },
+        "proc_corp_name": {
+            "type": "string",
+            "nullable": true,
+            "comment": "처리 회사명"
+        },
+        "proc_contact_name": {
+            "type": "string",
+            "nullable": true,
+            "comment": "처리 담당자명"
+        },
+        "memo": {
+            "type": "string",
+            "nullable": true
+        }
+    }
+}

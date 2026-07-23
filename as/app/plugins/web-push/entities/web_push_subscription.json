@@ -1,0 +1,37 @@
+{
+    "name": "web_push_subscription",
+    "description": "브라우저 웹푸시 구독 엔티티.",
+    "license_scope": true,
+    "compress": true,
+    "fields": {
+        "account_seq": {
+            "index": true,
+            "required": true,
+            "comment": "구독 계정 seq"
+        },
+        "endpoint": {
+            "hash": true,
+            "unique": true,
+            "required": true,
+            "comment": "Push 구독 endpoint"
+        },
+        "p256dh": {
+            "required": true,
+            "comment": "Push 구독 p256dh 키"
+        },
+        "auth": {
+            "required": true,
+            "comment": "Push 구독 auth 키"
+        },
+        "expiration_time": {
+            "comment": "구독 만료 시각"
+        },
+        "user_agent": {
+            "comment": "구독 브라우저 user agent"
+        },
+        "active": {
+            "index": true,
+            "comment": "활성 여부"
+        }
+    }
+}

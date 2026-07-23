@@ -1,0 +1,7 @@
+{
+    "driver": "memory",
+    "default_ttl_seconds": 3600,
+    "memory": {
+        "max_entries": 10000
+    }
+}

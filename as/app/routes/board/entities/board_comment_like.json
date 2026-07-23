@@ -1,0 +1,52 @@
+{
+    "name": "board_comment_like",
+    "description": "댓글 좋아요",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "comment_seq": {
+            "required": true,
+            "type": "uint",
+            "index": true,
+            "comment": "대상 board_comment seq"
+        },
+        "account_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "좋아요한 account seq"
+        }
+    },
+    "unique": [["comment_seq", "account_seq"]],
+    "fk": {
+        "comment_seq": "board_comment.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "description": "댓글 좋아요 시 board_comment.like_count 증가",
+                "type": "update",
+                "entity": "board_comment",
+                "match": {
+                    "seq": "${new.comment_seq}"
+                },
+                "data": {
+                    "like_count": "${target.like_count} + 1"
+                }
+            }
+        ],
+        "after_delete": [
+            {
+                "description": "댓글 좋아요 취소 시 board_comment.like_count 감소",
+                "type": "update",
+                "entity": "board_comment",
+                "match": {
+                    "seq": "${old.comment_seq}"
+                },
+                "data": {
+                    "like_count": "${target.like_count} - 1"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "_comment": "친구톡 설정 — enabled: false로 비활성화 상태",
+    "_note": "친구톡은 알림톡과 달리 사전 등록 템플릿 코드 없이 자유 형식으로 발송합니다. 본문 템플릿(content 패턴)은 templates/notification/friendtalk.json에 정의합니다.",
+    "_template_file": "templates/notification/friendtalk.json",
+    "enabled": false,
+    "default": "solapi",
+    "workers": 2,
+    "ad_prefix": "(광고)",
+    "default_ad": true,
+    "providers": {
+        "solapi": {
+            "driver": "solapi",
+            "_comment": "솔라피 (Solapi)",
+            "api_key": "${SOLAPI_API_KEY}",
+            "api_secret": "${SOLAPI_API_SECRET}",
+            "pf_id": "${SOLAPI_PF_ID}",
+            "api_url": "https://api.solapi.com"
+        },
+        "aligo": {
+            "driver": "aligo",
+            "_comment": "알리고",
+            "api_key": "${ALIGO_API_KEY}",
+            "user_id": "${ALIGO_USER_ID}",
+            "sender_key": "${ALIMTALK_SENDER_KEY}"
+        },
+        "nhncloud": {
+            "driver": "nhncloud",
+            "_comment": "NHN Cloud",
+            "app_key": "${NHNCLOUD_APP_KEY}",
+            "secret_key": "${NHNCLOUD_SECRET_KEY}",
+            "plus_friend_id": "${KAKAO_PLUS_FRIEND_ID}",
+            "api_url": "https://api-friendtalk.cloud.toast.com"
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "name": "board_mention",
+    "description": "게시글·댓글 멘션 기록",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "source_type": {
+            "type": ["post", "comment"],
+            "required": true,
+            "comment": "멘션이 포함된 소스 유형"
+        },
+        "source_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "소스 seq (board_post 또는 board_comment)"
+        },
+        "mentioned_account_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "멘션된 회원 seq"
+        },
+        "is_read": {
+            "type": "bool",
+            "default": false,
+            "comment": "읽음 여부"
+        }
+    },
+    "unique": ["source_type", "source_seq", "mentioned_account_seq"],
+    "fk": {
+        "mentioned_account_seq": "account.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "description": "멘션 시 해당 회원에게 push 알림",
+                "type": "push",
+                "target_account_seq": "mentioned_account_seq",
+                "title": "새 멘션이 있습니다",
+                "push_body": "누군가 회원님을 언급했습니다.",
+                "push_data": {
+                    "type": "board_mention",
+                    "seq": "${new.seq}",
+                    "source_type": "${new.source_type}",
+                    "source_seq": "${new.source_seq}"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "llm_user_profile",
+    "description": "LLM Profile Memory — 사용자별 기억 항목. 대화 시 system prompt에 자동 주입된다.",
+    "fields": {
+        "user_seq": {
+            "index": true,
+            "comment": "프로필 소유 사용자",
+            "required": true
+        },
+        "scope": {
+            "index": true,
+            "comment": "메모리 범위: global(전체 공유) 또는 chatbot_seq(챗봇 전용)",
+            "type": "varchar(50)",
+            "default": "global"
+        },
+        "chatbot_seq": {
+            "index": true,
+            "comment": "scope=chatbot 일 때 연결된 챗봇. null 이면 global",
+            "nullable": true
+        },
+        "key": {
+            "index": true,
+            "comment": "메모리 키 (예: 'name', 'preference', 'goal')",
+            "type": "varchar(100)",
+            "required": true
+        },
+        "value": {
+            "type": "text",
+            "comment": "메모리 값 (자연어 문장 권장)"
+        },
+        "source": {
+            "index": true,
+            "comment": "기록 출처: manual(직접 입력) | extracted(LLM 자동 추출)",
+            "type": ["manual", "extracted"],
+            "default": "manual"
+        },
+        "status": {
+            "index": true,
+            "comment": "활성 여부",
+            "type": ["active", "inactive"],
+            "default": "active"
+        }
+    },
+    "unique": ["user_seq", "scope", "key"]
+}

@@ -1,0 +1,26 @@
+{
+    "_comment": "FCM (Firebase Cloud Messaging) 및 APNs (Apple Push Notification) 설정 예시",
+    "enabled": true,
+    "default": "main",
+    "workers": 2,
+    "queue_size": 50,
+    "dispatch_interval_sec": 5,
+    "max_retries": 3,
+    "providers": {
+        "main": {
+            "_driver_comment": "FCM: Android, iOS(FCM 경유), Web 통합 발송",
+            "driver": "fcm",
+            "project_id": "my-firebase-project-id",
+            "key_file": "configs/keys/fcm-service-account.json"
+        },
+        "ios": {
+            "_driver_comment": "APNs: iOS 직접 발송 (HTTP/2 JWT 인증)",
+            "driver": "apns",
+            "key_id": "XXXXXXXXXX",
+            "team_id": "XXXXXXXXXX",
+            "bundle_id": "com.example.app",
+            "key_file": "configs/keys/apns-authkey.p8",
+            "production": false
+        }
+    }
+}

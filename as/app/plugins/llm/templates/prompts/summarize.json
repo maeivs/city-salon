@@ -1,0 +1,10 @@
+{
+    "name": "summarize",
+    "label": "텍스트 요약",
+    "system_msg": "당신은 전문 텍스트 요약 AI입니다. 핵심 정보만 간결하게 요약하세요.",
+    "user_msg": "아래 텍스트를 {{max_sentences}}문장 이내로 요약하세요.\n\n[텍스트]\n{{text}}\n\n요약만 출력하세요.",
+    "variables": ["text", "max_sentences"],
+    "defaults": {
+        "max_sentences": "3"
+    }
+}

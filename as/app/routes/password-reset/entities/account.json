@@ -1,0 +1,13 @@
+{
+    "name": "account",
+    "description": "비밀번호 재설정 라우트의 link 모드 활성화 시 account 엔티티에 추가되는 필드. temp_password 모드 필드(temp_password_hash, temp_password_issued_time)는 Go 서버가 관리하므로 entities/System/Auth/account.json에 정의되어 있습니다.",
+    "fields": {
+        "password_reset_token": {
+            "type": "varchar(128)",
+            "comment": "비밀번호 재설정 링크 토큰의 SHA-256 해시 (link 모드 전용)"
+        },
+        "password_reset_expires": {
+            "comment": "비밀번호 재설정 토큰 만료 시각 (ISO 8601, link 모드 전용)"
+        }
+    }
+}

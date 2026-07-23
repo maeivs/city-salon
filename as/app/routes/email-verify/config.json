@@ -1,0 +1,13 @@
+{
+    "enabled": true,
+    "required": false,
+    "code_length": 6,
+    "code_ttl_sec": 300,
+    "max_attempts": 5,
+    "resend_cooldown_sec": 60,
+    "link_base_url": "https://example.com/verify-email",
+    "rate_limit": {
+        "per_email_per_hour": 5
+    },
+    "email_subject": "이메일 인증"
+}

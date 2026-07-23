@@ -1,0 +1,27 @@
+{
+    "packet_encrypt": {
+        "enabled": true,
+        "magic_min": 2,
+        "magic_range": 14
+    },
+    "password_policy": {
+        "enabled": false,
+        "min_length": 8,
+        "max_length": 128,
+        "require_mixed_case": false,
+        "require_number": false,
+        "require_special": false,
+        "history_count": 5,
+        "forbidden_patterns": {
+            "sequential_digits": true,
+            "repeated_chars": true,
+            "keyboard_patterns": false,
+            "sequential_length": 4
+        },
+        "pii_check": {
+            "enabled": false,
+            "entity": "user",
+            "fields": ["phone", "birthday"]
+        }
+    }
+}

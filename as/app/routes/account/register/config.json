@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "send_welcome_email": false,
+    "welcome_email_subject": "가입을 환영합니다!",
+    "default_role": "user"
+}

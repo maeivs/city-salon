@@ -1,0 +1,6 @@
+{
+    "enabled": false,
+    "cron": "0 3 1 1,12 *",
+    "yearsAhead": 1,
+    "entity": "holiday"
+}

@@ -1,0 +1,1322 @@
+[
+    {
+        "tran_item": "가계수표",
+        "account_name": "현금",
+        "account_code": 10100
+    },
+    {
+        "tran_item": "가로등",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "가산금",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "가산세",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "가산세",
+        "account_name": "판매촉진비",
+        "account_code": 83400
+    },
+    {
+        "tran_item": "가설교량",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설목재(합판, 패널, 각재, 기와)",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설사무실",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설울타리",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설재",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설전기공급시설",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가설철재(강관비계, 철삽보드, PSPH-BEAM)",
+        "account_name": "가설재",
+        "account_code": 16600
+    },
+    {
+        "tran_item": "가수금",
+        "account_name": "가수금",
+        "account_code": 25700
+    },
+    {
+        "tran_item": "가스시설",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "가스용품(100만원이하)",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "가스용품(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "가스용품(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "가스통(100만원이하)",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "가스통(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "가스통(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "가습기(100만원이하)",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "가습기(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "가습기(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "가족수당",
+        "account_name": "직원급여",
+        "account_code": 80200
+    },
+    {
+        "tran_item": "가지급금",
+        "account_name": "가지급금",
+        "account_code": 13400
+    },
+    {
+        "tran_item": "가지급금 인정이자",
+        "account_name": "미수수익",
+        "account_code": 11600
+    },
+    {
+        "tran_item": "간부수련회 비용",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "간식비",
+        "account_name": "복리후생비",
+        "account_code": 81100
+    },
+    {
+        "tran_item": "간주임대료(임대인부담)",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "간주임대료에 대한 부가가치세(임차인 부담)",
+        "account_name": "지급수수료",
+        "account_code": 83100
+    },
+    {
+        "tran_item": "간판(100만원 초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "간판부착비용",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "간판제작비(100만원이하)",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "감가상각비",
+        "account_name": "감가상각비",
+        "account_code": 81800
+    },
+    {
+        "tran_item": "감독자 급여",
+        "account_name": "직원급여",
+        "account_code": 80200
+    },
+    {
+        "tran_item": "감자차손",
+        "account_name": "감자차손",
+        "account_code": 39400
+    },
+    {
+        "tran_item": "감자차익",
+        "account_name": "감자차익",
+        "account_code": 34200
+    },
+    {
+        "tran_item": "갑근세 대납액",
+        "account_name": "가지급금",
+        "account_code": 13400
+    },
+    {
+        "tran_item": "갑근세 원천징수액",
+        "account_name": "예수금",
+        "account_code": 25400
+    },
+    {
+        "tran_item": "갑근세 환급액",
+        "account_name": "미수금",
+        "account_code": 12000
+    },
+    {
+        "tran_item": "개발부담금",
+        "account_name": "토지",
+        "account_code": 20100
+    },
+    {
+        "tran_item": "개발비",
+        "account_name": "개발비",
+        "account_code": 23900
+    },
+    {
+        "tran_item": "개발비상각",
+        "account_name": "무형고정자산상각",
+        "account_code": 84000
+    },
+    {
+        "tran_item": "개발활동에 사용된 재료비,용역비(자산성)",
+        "account_name": "개발비",
+        "account_code": 23900
+    },
+    {
+        "tran_item": "개발황동에 사용된 재료비,용역비",
+        "account_name": "경상연구개발비",
+        "account_code": 82300
+    },
+    {
+        "tran_item": "개인정보보호위반과태료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "갱도",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "거래보증금",
+        "account_name": "기타보증금",
+        "account_code": 96400
+    },
+    {
+        "tran_item": "거래처 선물제공",
+        "account_name": "접대비",
+        "account_code": 81300
+    },
+    {
+        "tran_item": "거래처에 지출한주대",
+        "account_name": "접대비",
+        "account_code": 81300
+    },
+    {
+        "tran_item": "건강검진미수금",
+        "account_name": "의료미수금",
+        "account_code": 11901
+    },
+    {
+        "tran_item": "건강보험료 종업원부담분",
+        "account_name": "예수금",
+        "account_code": 25400
+    },
+    {
+        "tran_item": "건강보험료 회사부담분",
+        "account_name": "복리후생비",
+        "account_code": 81100
+    },
+    {
+        "tran_item": "건강보험미수금",
+        "account_name": "의료미수금",
+        "account_code": 11901
+    },
+    {
+        "tran_item": "건물",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물 내외벽 도장비용",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "건물 외벽청소비용",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "건물 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "건물 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "건물 철거비용",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "건물 취득시 내부 실내장치비용",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물 취득시 내부 칸막이 비용",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물 취득시에 전사용자에게 지급하는 퇴거비용",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물 취득에 따른 명도비용",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물(건설업,부동산매매업)",
+        "account_name": "상품",
+        "account_code": 14600
+    },
+    {
+        "tran_item": "건물(공장,사옥등)상량식비용",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건물(공장,사옥등)설립허가비용",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건물(공장,사옥등)신축에 따른 설계비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건물(공장,사옥등)신축에 따른 토지측량비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건물의 간단한 수리비용",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "건물의 도색비용",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "건물의 리모델링",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건물증여받음",
+        "account_name": "자산수증이익",
+        "account_code": 91700
+    },
+    {
+        "tran_item": "건물화재보험료",
+        "account_name": "보험료",
+        "account_code": 82100
+    },
+    {
+        "tran_item": "건설기간 중의 보험료",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건설용장비",
+        "account_name": "건설용장비",
+        "account_code": 21700
+    },
+    {
+        "tran_item": "건설용장비 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "건설용장비 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "건설용지",
+        "account_name": "건설용지",
+        "account_code": 16500
+    },
+    {
+        "tran_item": "건설자금이자",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건설자금이자(자본화한것은 제외)",
+        "account_name": "이자비용",
+        "account_code": 93100
+    },
+    {
+        "tran_item": "건설중 노무비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건설중 외주비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건설중 자재비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건설중 지출경비",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건설중인자산",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "건전지",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "건전지",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "건축물의 용도변경, 개량, 확장 및 증설을 위한 철거",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "건축중인 건물",
+        "account_name": "건설중인자산",
+        "account_code": 21400
+    },
+    {
+        "tran_item": "검사비(수입시)",
+        "account_name": "상품",
+        "account_code": 14600
+    },
+    {
+        "tran_item": "검사비(수입시)",
+        "account_name": "원재료",
+        "account_code": 15300
+    },
+    {
+        "tran_item": "검사비(수입시)",
+        "account_name": "미착품",
+        "account_code": 16800
+    },
+    {
+        "tran_item": "검사비(수출시)",
+        "account_name": "수출제비용",
+        "account_code": 83800
+    },
+    {
+        "tran_item": "게이지",
+        "account_name": "공구와기구",
+        "account_code": 21000
+    },
+    {
+        "tran_item": "견본비(수출시)",
+        "account_name": "수출제비용",
+        "account_code": 83800
+    },
+    {
+        "tran_item": "견본품의 수취",
+        "account_name": "잡이익",
+        "account_code": 93000
+    },
+    {
+        "tran_item": "견학비",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "경미한 도난손실",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "경미한 상하수도 수리공사",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "경미한 정화조공사",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "경상경비 충당후 발생한 부족액 보전을 위해 정상적으로 추가부과한 회비",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "경상연구개발비",
+        "account_name": "경상연구개발비",
+        "account_code": 82300
+    },
+    {
+        "tran_item": "경조사비(거래처)",
+        "account_name": "접대비",
+        "account_code": 81300
+    },
+    {
+        "tran_item": "경조사비(직원)",
+        "account_name": "복리후생비",
+        "account_code": 81100
+    },
+    {
+        "tran_item": "경품",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "계산기",
+        "account_name": "공구와기구",
+        "account_code": 21000
+    },
+    {
+        "tran_item": "계산서합계표미제출(불성실)가산세",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "계약금 몰수",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "계약금 지급",
+        "account_name": "선급금",
+        "account_code": 13100
+    },
+    {
+        "tran_item": "계약위반배상금 지급",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "고무인",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "고무인",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "고사바용",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "고서(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "고서(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "고속도로 통행료,고속도로 통행카드 구입,고속도로 통행카드 충전료",
+        "account_name": "여비교통비",
+        "account_code": 81200
+    },
+    {
+        "tran_item": "고속도로 통행료,고속도로 통행카드 구입,고속도로 통행카드 충전료",
+        "account_name": "차량유지비",
+        "account_code": 82200
+    },
+    {
+        "tran_item": "고속버스요금",
+        "account_name": "여비교통비",
+        "account_code": 81200
+    },
+    {
+        "tran_item": "고속절단기",
+        "account_name": "공구와기구",
+        "account_code": 21000
+    },
+    {
+        "tran_item": "고용보험료 기간미경과분",
+        "account_name": "선급비용",
+        "account_code": 13300
+    },
+    {
+        "tran_item": "고용보험료 종업원부담분",
+        "account_name": "예수금",
+        "account_code": 25400
+    },
+    {
+        "tran_item": "고용보험료 회사부담분",
+        "account_name": "복리후생비",
+        "account_code": 81100
+    },
+    {
+        "tran_item": "고용유지지원금",
+        "account_name": "국고보조금",
+        "account_code": 39200
+    },
+    {
+        "tran_item": "고용촉진장려금",
+        "account_name": "국고보조금",
+        "account_code": 39200
+    },
+    {
+        "tran_item": "고장등으로 인한 견인료",
+        "account_name": "차량유지비",
+        "account_code": 82200
+    },
+    {
+        "tran_item": "고정자산(기계장치,건물 등)매각대금 중 미회수액",
+        "account_name": "미수금",
+        "account_code": 12000
+    },
+    {
+        "tran_item": "고정자산(기계장치,건물 등)매입 선지급액",
+        "account_name": "선급금",
+        "account_code": 13100
+    },
+    {
+        "tran_item": "고철 매각대",
+        "account_name": "잡이익",
+        "account_code": 93000
+    },
+    {
+        "tran_item": "골동품(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "골동품(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "공구 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "공구 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "공구·기구의 수선",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "공구와기구",
+        "account_name": "공구와기구",
+        "account_code": 21000
+    },
+    {
+        "tran_item": "공기정화기(100만원이하)",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "공기정화기(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "공기정화기(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "공사대선지급",
+        "account_name": "선급금",
+        "account_code": 13100
+    },
+    {
+        "tran_item": "공사미수금",
+        "account_name": "공사미수금",
+        "account_code": 11200
+    },
+    {
+        "tran_item": "공사부담금",
+        "account_name": "공사부담금",
+        "account_code": 39300
+    },
+    {
+        "tran_item": "공사설계안쇄비",
+        "account_name": "도서인쇄비",
+        "account_code": 82600
+    },
+    {
+        "tran_item": "공사수입",
+        "account_name": "상품매출",
+        "account_code": 40100
+    },
+    {
+        "tran_item": "공사수입금",
+        "account_name": "공사수입금",
+        "account_code": 40700
+    },
+    {
+        "tran_item": "공사현장운영비",
+        "account_name": "전도금",
+        "account_code": 13800
+    },
+    {
+        "tran_item": "공인인증서 발급수수료",
+        "account_name": "지급수수료",
+        "account_code": 83100
+    },
+    {
+        "tran_item": "공작기기",
+        "account_name": "기계장치",
+        "account_code": 20600
+    },
+    {
+        "tran_item": "공장",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "공장견학자들에게 제공하는 견본품비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "공장부지",
+        "account_name": "토지",
+        "account_code": 20100
+    },
+    {
+        "tran_item": "공장임차료",
+        "account_name": "지급임차료",
+        "account_code": 81900
+    },
+    {
+        "tran_item": "공장토지취득시 하수종말처리장 설치부담금",
+        "account_name": "토지",
+        "account_code": 20100
+    },
+    {
+        "tran_item": "과대포장 과태료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "과료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "과태료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "관계회사 자금일시대여",
+        "account_name": "단기대여금",
+        "account_code": 11400
+    },
+    {
+        "tran_item": "관리자 급여",
+        "account_name": "직원급여",
+        "account_code": 80200
+    },
+    {
+        "tran_item": "관보구독료",
+        "account_name": "도서인쇄비",
+        "account_code": 82600
+    },
+    {
+        "tran_item": "관세(상품수입시)",
+        "account_name": "상품",
+        "account_code": 14600
+    },
+    {
+        "tran_item": "관세(수입시):미착상태",
+        "account_name": "미착품",
+        "account_code": 16800
+    },
+    {
+        "tran_item": "관세(원재료수입시)",
+        "account_name": "원재료",
+        "account_code": 15300
+    },
+    {
+        "tran_item": "관세환급금(상품)",
+        "account_name": "관세환급금(상품)",
+        "account_code": 14900
+    },
+    {
+        "tran_item": "관청의무보고 위반시 과태료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "광고료 선급후 기간미경과분",
+        "account_name": "선급비용",
+        "account_code": 13300
+    },
+    {
+        "tran_item": "광고물 구입비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고물 배포비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고물 제작비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고물 제작의뢰비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고사진촬영비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전비",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전용 견본품",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전용 달력",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전용 부채",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전용 수첩",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고선전용 컵",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고용 네온탑",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "광고용 부착물 비용",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "광고용쇼케이스",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "광고용품",
+        "account_name": "저장품(소모품)",
+        "account_code": 16700
+    },
+    {
+        "tran_item": "광업권",
+        "account_name": "광업권",
+        "account_code": 23700
+    },
+    {
+        "tran_item": "교량",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "교육시 식대,숙박비,교통비 등",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "교육용책자와 매뉴얼 인쇄비",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "교육장임차료 등",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "교육훈련보조금",
+        "account_name": "국고보조금",
+        "account_code": 39200
+    },
+    {
+        "tran_item": "교육훈련비",
+        "account_name": "교육훈련비",
+        "account_code": 82500
+    },
+    {
+        "tran_item": "교통사고배상금 지급",
+        "account_name": "잡손실",
+        "account_code": 96000
+    },
+    {
+        "tran_item": "교통위반 벌금",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "교통유발부담금",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "구인광고",
+        "account_name": "광고선전비",
+        "account_code": 83300
+    },
+    {
+        "tran_item": "구축물",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "구축물 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "구축물 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "국·공채처분이익",
+        "account_name": "단기투자자산처분익",
+        "account_code": 90600
+    },
+    {
+        "tran_item": "국·공채평가이익",
+        "account_name": "단기투자자산평가익",
+        "account_code": 90500
+    },
+    {
+        "tran_item": "국가 또는 지방자치단체에 대한 기부금",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국고보조금",
+        "account_name": "국고보조금",
+        "account_code": 39200
+    },
+    {
+        "tran_item": "국고지급통지서",
+        "account_name": "현금",
+        "account_code": 10100
+    },
+    {
+        "tran_item": "국공채",
+        "account_name": "유가증권",
+        "account_code": 10700
+    },
+    {
+        "tran_item": "국공채이자 미수액",
+        "account_name": "미수수익",
+        "account_code": 11600
+    },
+    {
+        "tran_item": "국립대학병원에 지출한 시설비 교육비 또는 연구비",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국립암센터에 지출한 시설비 교육비 또는 연구비",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국민신탁법인에 지출하는 기부금",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국민연금 종업원부담분",
+        "account_name": "예수금",
+        "account_code": 25400
+    },
+    {
+        "tran_item": "국민연금 중 퇴직금전환금",
+        "account_name": "국민연금전환금",
+        "account_code": 20000
+    },
+    {
+        "tran_item": "국민연금 회사부담분",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "국민연금보험료 기간미경과분",
+        "account_name": "선급비용",
+        "account_code": 13300
+    },
+    {
+        "tran_item": "국민연금전환금",
+        "account_name": "국민연금전환금",
+        "account_code": 20000
+    },
+    {
+        "tran_item": "국민체육진흥기금",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국방헌금,국군장병 위문금품",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "국세 결손처분을 받은 채무자에 대한 채권",
+        "account_name": "대손상각비",
+        "account_code": 83500
+    },
+    {
+        "tran_item": "국제전화선불카드",
+        "account_name": "통신비",
+        "account_code": 81400
+    },
+    {
+        "tran_item": "국제특급우편(EMS)",
+        "account_name": "통신비",
+        "account_code": 81400
+    },
+    {
+        "tran_item": "국제특급운편(EMS),DHL,UPS,Fedex",
+        "account_name": "운반비",
+        "account_code": 82400
+    },
+    {
+        "tran_item": "국제특송운편(EMS),DHL,UPS,Fedex",
+        "account_name": "운반비",
+        "account_code": 52400
+    },
+    {
+        "tran_item": "국채, 공채 이자(유가증권 이자)",
+        "account_name": "이자수익",
+        "account_code": 90100
+    },
+    {
+        "tran_item": "국토이용관리법위반시 과태료",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "굴뚝",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "굴삭기(Backhoe)",
+        "account_name": "건설용장비",
+        "account_code": 21700
+    },
+    {
+        "tran_item": "궤도",
+        "account_name": "구축물",
+        "account_code": 20400
+    },
+    {
+        "tran_item": "균등할 주민세",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "그레이더(Grader)",
+        "account_name": "건설용장비",
+        "account_code": 21700
+    },
+    {
+        "tran_item": "근속수당",
+        "account_name": "직원급여",
+        "account_code": 80200
+    },
+    {
+        "tran_item": "금고(100만원이하)",
+        "account_name": "사무용품비",
+        "account_code": 82900
+    },
+    {
+        "tran_item": "금고(100만원이하)",
+        "account_name": "소모품비",
+        "account_code": 83000
+    },
+    {
+        "tran_item": "금고(100만원초과)",
+        "account_name": "비품",
+        "account_code": 21200
+    },
+    {
+        "tran_item": "금융리스이자",
+        "account_name": "이자비용",
+        "account_code": 93100
+    },
+    {
+        "tran_item": "금융수수료(송금수수료, 인터넷뱅킹수수료,모바일뱅킹수수료, 텔레뱅킹수수료, 자동이체수수료, 수표발행수수료, 신용조사수수료, 신용보증수수료, 제증명발급수수료, 예금잔고증명수수료, 급여이체시 수수료)",
+        "account_name": "지급수수료",
+        "account_code": 83100
+    },
+    {
+        "tran_item": "금융어음 교부",
+        "account_name": "단기차입금",
+        "account_code": 26000
+    },
+    {
+        "tran_item": "금형",
+        "account_name": "공구와기구",
+        "account_code": 21000
+    },
+    {
+        "tran_item": "급배수시설",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "급여의 가불액",
+        "account_name": "가지급금",
+        "account_code": 13400
+    },
+    {
+        "tran_item": "기계부속품 수리비",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "기계의 소모된 부속품 대체비용",
+        "account_name": "수선비",
+        "account_code": 82000
+    },
+    {
+        "tran_item": "기계장치",
+        "account_name": "기계장치",
+        "account_code": 20600
+    },
+    {
+        "tran_item": "기계장치 이전",
+        "account_name": "운반비",
+        "account_code": 52400
+    },
+    {
+        "tran_item": "기계장치 이전",
+        "account_name": "운반비",
+        "account_code": 82400
+    },
+    {
+        "tran_item": "기계장치 임차료",
+        "account_name": "지급임차료",
+        "account_code": 81900
+    },
+    {
+        "tran_item": "기계장치 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "기계장치 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "기계장치 철거비용",
+        "account_name": "운반비",
+        "account_code": 52400
+    },
+    {
+        "tran_item": "기계장치 철거비용",
+        "account_name": "운반비",
+        "account_code": 82400
+    },
+    {
+        "tran_item": "기계장치운용리스료",
+        "account_name": "지급임차료",
+        "account_code": 81900
+    },
+    {
+        "tran_item": "기구 처분손실",
+        "account_name": "유형자산처분손실",
+        "account_code": 95000
+    },
+    {
+        "tran_item": "기구 처분이익",
+        "account_name": "유형자산처분이익",
+        "account_code": 91400
+    },
+    {
+        "tran_item": "기금에서지출하는분담금",
+        "account_name": "세금과공과",
+        "account_code": 81700
+    },
+    {
+        "tran_item": "기능대학에 지출한 시설비, 교육비, 장학금, 연구비",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "기본급",
+        "account_name": "직원급여",
+        "account_code": 80200
+    },
+    {
+        "tran_item": "기부금",
+        "account_name": "기부금",
+        "account_code": 93300
+    },
+    {
+        "tran_item": "기숙사",
+        "account_name": "건물",
+        "account_code": 20200
+    },
+    {
+        "tran_item": "기숙사운영비",
+        "account_name": "복리후생비",
+        "account_code": 81100
+    },
+    {
+        "tran_item": "기술개발준비금전입",
+        "account_name": "기술개발준비금전입",
+        "account_code": 95300
+    },
+    {
+        "tran_item": "기술자문료",
+        "account_name": "수입수수료",
+        "account_code": 90900
+    },
+    {
+        "tran_item": "기업어음(CP)",
+        "account_name": "기타단기금융상품",
+        "account_code": 10600
+    },
+    {
+        "tran_item": "기업합리화 적립금",
+        "account_name": "기업합리화 적립금",
+        "account_code": 35200
+    },
+    {
+        "tran_item": "기중기",
+        "account_name": "기계장치",
+        "account_code": 20600
+    },
+    {
+        "tran_item": "기중기",
+        "account_name": "건설용장비",
+        "account_code": 21700
+    },
+    {
+        "tran_item": "기차",
+        "account_name": "차량운반구",
+        "account_code": 20800
+    },
+    {
+        "tran_item": "기타단기금융상품",
+        "account_name": "기타단기금융상품",
+        "account_code": 10600
+    },
+    {
+        "tran_item": "기타보증금",
+        "account_name": "기타보증금",
+        "account_code": 96400
+    },
+    {
+        "tran_item": "기타의대손상각비",
+        "account_name": "기타의대손상각비",
+        "account_code": 93400
+    },
+    {
+        "tran_item": "기타의료수익미수금",
+        "account_name": "의료미수금",
+        "account_code": 11901
+    },
+    {
+        "tran_item": "기타자본잉여금",
+        "account_name": "기타자본잉여금",
+        "account_code": 34900
+    },
+    {
+        "tran_item": "기타제예금",
+        "account_name": "기타제예금",
+        "account_code": 10400
+    }
+]

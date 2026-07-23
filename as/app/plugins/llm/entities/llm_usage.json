@@ -1,0 +1,51 @@
+{
+    "name": "llm_usage",
+    "description": "LLM API 호출 사용량 기록. 비용 모니터링 및 쿼터 관리용.",
+    "compress": true,
+    "read_only": true,
+    "fields": {
+        "provider_name": {
+            "index": true,
+            "comment": "LLM 프로바이더 이름 (llm.json 키)",
+            "type": "varchar(50)",
+            "required": true
+        },
+        "caller_service": {
+            "index": true,
+            "comment": "호출한 기능 (ocr, chatbot, summary 등)",
+            "type": "varchar(50)",
+            "required": true
+        },
+        "total_tokens": {
+            "index": true,
+            "comment": "총 토큰 수 (prompt + completion)",
+            "type": "int"
+        },
+        "tenant_id": {
+            "index": true,
+            "comment": "테넌트 ID"
+        },
+        "model": {
+            "type": "varchar(100)",
+            "comment": "사용된 모델명 (gpt-4o-mini 등)",
+            "required": true
+        },
+        "prompt_tokens": { "type": "int", "comment": "프롬프트 토큰 수" },
+        "completion_tokens": { "type": "int", "comment": "응답 토큰 수" },
+        "estimated_cost": {
+            "type": "decimal(10,6)",
+            "comment": "추정 비용 (USD)"
+        },
+        "request_time_ms": { "type": "int", "comment": "요청 처리 시간 (ms)" },
+        "status": {
+            "type": "varchar(20)",
+            "comment": "요청 결과 (success, error, timeout)"
+        },
+        "error_message": {
+            "type": "string",
+            "nullable": true,
+            "comment": "실패 시 오류 메시지"
+        },
+        "user_seq": { "nullable": true, "comment": "요청 사용자 seq" }
+    }
+}

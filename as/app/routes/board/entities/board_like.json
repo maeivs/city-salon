@@ -1,0 +1,49 @@
+{
+    "name": "board_like",
+    "description": "게시글/답글 좋아요",
+    "index_table_only": true,
+    "index_updated_time": false,
+    "hard_delete": true,
+    "fields": {
+        "post_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "대상 board_post seq"
+        },
+        "account_seq": {
+            "required": true,
+            "type": "uint",
+            "comment": "좋아요한 account seq"
+        }
+    },
+    "unique": [["post_seq", "account_seq"]],
+    "fk": {
+        "post_seq": "board_post.seq"
+    },
+    "hooks": {
+        "after_insert": [
+            {
+                "type": "update",
+                "entity": "board_post",
+                "match": {
+                    "seq": "${new.post_seq}"
+                },
+                "data": {
+                    "like_count": "${target.like_count} + 1"
+                }
+            }
+        ],
+        "before_delete": [
+            {
+                "type": "update",
+                "entity": "board_post",
+                "match": {
+                    "seq": "${old.post_seq}"
+                },
+                "data": {
+                    "like_count": "${target.like_count} - 1"
+                }
+            }
+        ]
+    }
+}
